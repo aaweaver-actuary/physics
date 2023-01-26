@@ -1,0 +1,2870 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[    107140,       2862]
+NotebookOptionsPosition[     87683,       2553]
+NotebookOutlinePosition[     88537,       2582]
+CellTagsIndexPosition[     88494,       2579]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[" Harmonic Motion", "Title",
+ Evaluatable->False,
+ CellChangeTimes->{3.8188683381557693`*^9},
+ TextAlignment->Center,
+ TextJustification->0,
+ AspectRatioFixed->
+  True,ExpressionUUID->"de9a937d-8188-4da6-8d84-c3cb5644e2e9"],
+
+Cell[BoxData[
+ ButtonBox[
+  RowBox[{
+  "Click", " ", "here", " ", "to", " ", "see", " ", "a", " ", "famous", " ", 
+   "harmonic", " ", "oscillator"}],
+  BaseStyle->"Hyperlink",
+  ButtonData:>{
+    URL["http://www.youtube.com/watch?v=j-zczJXSxnw"], None}]], "Input",
+ PageWidth:>PaperWidth,ExpressionUUID->"50ad7ac3-c00c-483d-8850-d8682aedf8a2"],
+
+Cell[CellGroupData[{
+
+Cell["Simple Harmonic Motion", "Subsection",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"5362a4a6-864a-4655-aaf6-6c10d162cbe2"],
+
+Cell[TextData[{
+ "Simple harmonic motion plays a central role in much of physics and \
+engineering.  The description is used widely for disparate phenomena such as \
+oscillations in an AC circuit, the bending of a bridge, and the quantum \
+mechanics of light. The prototypical simple harmonic oscillator is a mass on \
+an ideal (Hooke's law) spring. The restoring force provided by the spring is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"F", "=", 
+    RowBox[{
+     RowBox[{"-", "k"}], " ", "x"}]}], TraditionalForm]],ExpressionUUID->
+  "2ed799b1-ddea-4440-a98d-6e11180d35f1"],
+ " where ",
+ Cell[BoxData[
+  FormBox["x", TraditionalForm]],ExpressionUUID->
+  "170fdb45-458d-47c7-b14f-288976e47008"],
+ " is the displacement from equilibrium and k is the spring constant. The \
+equation of motion for the mass is"
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"8402b42d-8194-4f8d-84cf-ae0f2635bf40"],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"m", " ", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["d", "2"], "x"}], 
+     RowBox[{"d", " ", 
+      SuperscriptBox["t", "2"]}]]}], "  ", "=", " ", 
+   RowBox[{
+    RowBox[{"-", "k"}], " ", "x", " "}]}], 
+  TraditionalForm]],ExpressionUUID->"10570e10-92cd-48a3-84b9-05af0df31890"]], \
+"Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"dfc21ade-4cb1-402c-abc2-b748c8c27c6f"],
+
+Cell["which we can rewrite as", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"208f0323-3a94-4d16-9a90-fad7dc313120"],
+
+Cell[TextData[{
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["d", "2"], "x"}], 
+      RowBox[{"d", " ", 
+       SuperscriptBox["t", "2"]}]], " ", "+", " ", 
+     RowBox[{
+      SuperscriptBox["\[Omega]", "2"], " ", "x"}]}], "=", " ", "0"}], 
+   TraditionalForm]],ExpressionUUID->"dd1896a8-44aa-42d0-8031-963b4c9b496b"]
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"bbbc727e-1519-47cf-94ef-d181e0b6dc0c"],
+
+Cell["where ", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"de479635-1dae-4cf1-a0a2-6157c0bf0625"],
+
+Cell[TextData[{
+ "\[Omega] = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox[
+     FractionBox["k", "m"]], " ", "."}], TraditionalForm]],ExpressionUUID->
+  "990107fa-1f62-4f07-b2b0-08e006581a04"]
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"7c4a28f9-33c3-4796-9e5b-a2bcab1d3d5e"],
+
+Cell["\<\
+This gives us a second order differential equation to solve for x(t). We want \
+a function, which when differentiated twice will give us the original \
+function times a constant. The obvious candidates are the sine and the \
+cosine. Let us try a solution of the form\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"3f9f4e98-5b90-4457-870a-7144eeff9546"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"x", "[", "t_", "]"}], "=", 
+  RowBox[{
+   RowBox[{"A", " ", 
+    RowBox[{"Sin", "[", 
+     RowBox[{"w", " ", "t"}], "]"}]}], "+", 
+   RowBox[{"B", " ", 
+    RowBox[{"Cos", "[", 
+     RowBox[{"w", " ", "t"}], "]"}]}]}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[1]:=",ExpressionUUID->"e64c6a7d-84bf-4b26-88f8-6065b9fbb071"],
+
+Cell["The equation for simple harmonic motion is", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"85d014f3-5832-4de4-b6ea-f9afc845165a"],
+
+Cell[BoxData[
+ RowBox[{"eqn", "=", 
+  RowBox[{
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"x", "[", "t", "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", " ", "2"}], "}"}]}], "]"}], "+", 
+   RowBox[{
+    SuperscriptBox["\[Omega]", "2"], " ", 
+    RowBox[{"x", "[", "t", "]"}]}]}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[2]:=",ExpressionUUID->"410ba4a4-5641-49f6-9ce5-33de19f0ca0f"],
+
+Cell[TextData[{
+ "We can collect the terms in the sine and the cosine together using the ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " command ",
+ ButtonBox["Collect",
+  BaseStyle->"RefGuideLink"],
+ ". The syntax for",
+ StyleBox[" Collect",
+  FontWeight->"Bold"],
+ " is"
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"3f6795fa-7d70-450b-a385-aa207ff2db8e"],
+
+Cell[BoxData[
+ RowBox[{"?", "Collect"}]], "Input",
+ AspectRatioFixed->
+  True,ExpressionUUID->"079d65e3-bb1b-463a-b716-5fedfe9c8017"],
+
+Cell["Collecting the sine and cosine terms", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"c6ff2066-b175-42a4-9157-daff32b86a3f"],
+
+Cell[BoxData[
+ RowBox[{"Collect", "[", 
+  RowBox[{"eqn", ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "B"}], "}"}]}], "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[3]:=",ExpressionUUID->"0e147bca-c080-4424-b818-af0960dd6fc7"],
+
+Cell[TextData[{
+ "shows that the differential equation will be satisfied for all A and B if \
+",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"w", "=", "\[Omega]"}], TraditionalForm]],ExpressionUUID->
+  "d135fcc0-17b3-46cc-b62d-304ea3c3173b"],
+ ". The constants A and B are (at this point) arbitrary constants and will be \
+determined by the initial conditions. In fact, B is the initial displacement \
+of the oscillator"
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"91d63622-33bd-45f4-8889-69a7cc69a0de"],
+
+Cell[BoxData[
+ RowBox[{"x", "[", "0", "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[4]:=",ExpressionUUID->"e363a1d9-7acb-4dd2-b860-b0a28ab137b8"],
+
+Cell["\<\
+and A is v(0)/w as can be seen by differentiating x[t] to get the velocity\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"12036b56-c580-437c-b92c-d3f7529ebd82"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"v", "[", "t_", "]"}], "=", 
+  RowBox[{"D", "[", 
+   RowBox[{
+    RowBox[{"x", "[", "t", "]"}], ",", "t"}], "]"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[5]:=",ExpressionUUID->"7093d53f-cd91-470d-98fe-f9cf29aac9c4"],
+
+Cell["and then checking the velocity at t=0.", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"c30f3294-e43e-4e80-b659-d392383c1a20"],
+
+Cell[BoxData[
+ RowBox[{"v", "[", "0", "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[6]:=",ExpressionUUID->"6e09debb-0e7c-48a9-93b2-d948f80360a1"],
+
+Cell["\<\
+Since sin(x+\[Phi])=sin(x) cos(\[Phi])+cos(x) sin(\[Phi]) our solution can be \
+rewritten as\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"0213c2f8-bb1c-46aa-a186-8c0d21a96ea5"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", 
+  RowBox[{"x", ",", "eqn"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"x", "[", "t_", "]"}], "=", 
+  RowBox[{"A", " ", 
+   RowBox[{"Cos", "[", 
+    RowBox[{
+     RowBox[{"w", " ", "t"}], "+", "\[Phi]"}], "]"}]}]}]}], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[7]:=",ExpressionUUID->"b2a14988-aa24-4829-a0eb-4803c2744a7e"],
+
+Cell["\<\
+Here \[Phi] is a constant called the phase angle. Putting this back into our \
+equation for simple harmonic motion gives\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"27ca0e10-f89a-460d-8578-d3ba7b7d944a"],
+
+Cell[BoxData[
+ RowBox[{"eqn", "=", 
+  RowBox[{
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"x", "[", "t", "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", " ", "2"}], "}"}]}], "]"}], "+", 
+   RowBox[{
+    SuperscriptBox["\[Omega]", "2"], " ", 
+    RowBox[{"x", "[", "t", "]"}]}]}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[9]:=",ExpressionUUID->"027f6b5b-ad01-42ba-9b50-48aa1055334a"],
+
+Cell[BoxData[
+ RowBox[{"Simplify", "[", "eqn", "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[10]:=",ExpressionUUID->"0ec2e392-8bb7-4e99-bdc4-0f533fabf454"],
+
+Cell[TextData[{
+ "which shows that this is a solution, if ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Omega]", "=", "w"}], TraditionalForm]],ExpressionUUID->
+  "94f1fb49-939a-4c45-8a7a-3e2b54f6be46"],
+ ".  We can discover the physical significance of \[Phi] by looking at x[0] \
+and v[0]."
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"d8bc3837-94a4-4d0b-8a54-e2f55a2eb1ec"],
+
+Cell[BoxData[
+ RowBox[{"x", "[", "0", "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[11]:=",ExpressionUUID->"697aaf74-0a17-4735-accf-b411a5f6eb6c"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "v", "]"}], "\n", 
+ RowBox[{
+  RowBox[{"v", "[", "t_", "]"}], "=", 
+  RowBox[{"D", "[", 
+   RowBox[{
+    RowBox[{"x", "[", "t", "]"}], ",", "t"}], "]"}]}], "\n", 
+ RowBox[{"v", "[", "0", "]"}]}], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[12]:=",ExpressionUUID->"30b42934-9362-4096-aca5-16fd670a39d9"],
+
+Cell["Thus,", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"8c1db92a-fd04-4ec2-b610-c94b576d06a8"],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"v", "[", "0", "]"}], 
+  RowBox[{"x", "[", "0", "]"}]]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[15]:=",ExpressionUUID->"e93df5f9-9e24-43be-b3f1-0059c1e9ce3f"],
+
+Cell["\<\
+and the phase angle \[Phi] is given by phi=ArcTan[v[0]/(w x[0]). Thus, if \
+v(0)=0, \[Phi]=0 or \[Pi]. If x(0)=0, then \[Phi]=\[Pi]/2 or 3\[Pi]/2.  We \
+can see this by looking at a plot of the tangent.\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"e5eef470-ed83-4530-8c48-f18995b2a32f"],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"Tan", "[", "\[Phi]", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Phi]", ",", "0", ",", 
+     RowBox[{"2", " ", "\[Pi]"}]}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[16]:=",ExpressionUUID->"3ca16987-8281-4109-9772-b75dbbd4498a"],
+
+Cell[CellGroupData[{
+
+Cell["Energy Conservation in Simple Harmonic Motion", "Subsubsection",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"75754224-273a-4d79-a1a0-8a4f581f1077"],
+
+Cell["\<\
+Energy is conserved in simple harmonic motion since there are no dissipative \
+forces. During the motion the energy sloshes back and forth between kinetic \
+and potential energy. The kinetic energy is\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"143fca96-f9c3-47b8-8f8a-bc3cc75161b1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"KE", "[", "t_", "]"}], "=", 
+  RowBox[{
+   FractionBox["1", "2"], " ", "m", " ", 
+   SuperscriptBox[
+    RowBox[{"v", "[", "t", "]"}], "2"]}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[17]:=",ExpressionUUID->"4b8eebdc-4671-4636-9328-8d49bb5b9bb9"],
+
+Cell["and the potential energy is", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"39b70035-4db5-45ba-ab43-c2af0d474c87"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"U", "[", "t_", "]"}], "=", 
+  RowBox[{
+   FractionBox["1", "2"], " ", "k", " ", 
+   SuperscriptBox[
+    RowBox[{"x", "[", "t", "]"}], "2"]}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[18]:=",ExpressionUUID->"0d372c41-c6c2-4ffd-b571-4b51c06440c8"],
+
+Cell["The total energy is", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"ed80ba75-1d84-4ab8-a74a-6d90af8b49ee"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Energy", "[", "t_", "]"}], "=", 
+  RowBox[{
+   RowBox[{"KE", "[", "t", "]"}], "+", 
+   RowBox[{"U", "[", "t", "]"}]}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[19]:=",ExpressionUUID->"fa90a64b-9946-420c-af9d-8d032ed6d49e"],
+
+Cell[TextData[{
+ "Since ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Omega]", "=", 
+    SqrtBox[
+     RowBox[{"k", "/", "m"}]]}], TraditionalForm]],ExpressionUUID->
+  "bc4c8e30-af6f-45e7-9bac-e5e2c1380ebe"],
+ " we have"
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"303c155b-a320-42bc-ad8e-e7e8dfff3b20"],
+
+Cell[BoxData[
+ RowBox[{"Simplify", "[", 
+  RowBox[{
+   RowBox[{"Energy", "[", "t", "]"}], "/.", "\[InvisibleSpace]", 
+   RowBox[{"w", "\[Rule]", 
+    SqrtBox[
+     FractionBox["k", "m"]]}]}], "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[20]:=",ExpressionUUID->"206f4bc2-2ea5-4031-a417-4bdbd0e33fa7"],
+
+Cell[TextData[{
+ "which shows that the energy is constant throughout the motion. \n\nSuppose \
+we start our oscillator with v[0]=0 and x[0] =10cm. Then \[Phi]=0 and A=10cm. \
+Suppose further that m=0.1kg and k=1N/m so that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Omega]", "=", 
+    SqrtBox["10"]}], TraditionalForm]],ExpressionUUID->
+  "5f1db285-fe4e-4f45-9a47-92d8406e215d"],
+ " and the total energy of the oscillator is (.1)^2 /2 J or E=0.05J. We can \
+plot the kinetic and potential energies as a function of time. With these \
+values we have an oscillator with a period of just under two seconds. Recall \
+that the period T is given by T=2 \[Pi]/\[Omega]."
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"49d083a4-1351-4911-93a2-e1bd4dbfc460"],
+
+Cell[BoxData[
+ RowBox[{"oscillatorConditions", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"A", "\[Rule]", ".1"}], ",", 
+    RowBox[{"m", "\[Rule]", ".1"}], ",", 
+    RowBox[{"w", "\[Rule]", 
+     SqrtBox[
+      FractionBox["k", "m"]]}], ",", 
+    RowBox[{"\[Phi]", "\[Rule]", "0"}], ",", 
+    RowBox[{"k", "\[Rule]", "1"}]}], "}"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[21]:=",ExpressionUUID->"d56d2a83-f297-4b49-9a36-7cba9c4848fe"],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Tooltip", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"KE", "[", "t", "]"}], "//.", "\[InvisibleSpace]", 
+        "oscillatorConditions"}], ",", "\"\<kinetic energy\>\""}], "]"}], ",", 
+     RowBox[{"Tooltip", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"U", "[", "t", "]"}], "//.", "\[InvisibleSpace]", 
+        "oscillatorConditions"}], ",", "\"\<potential energy\>\""}], "]"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "2"}], "}"}], ",", 
+   RowBox[{"PlotStyle", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"1", ",", "0", ",", "0"}], "]"}], ",", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0", ",", "0", ",", "1"}], "]"}]}], "}"}]}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<time\>\"", ",", "\"\<Energy\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.502620952277624*^9, 3.502620955716208*^9}, {
+  3.502621121965045*^9, 3.5026211329390993`*^9}, {3.5026211864227448`*^9, 
+  3.502621263168231*^9}},
+ AspectRatioFixed->True,
+ CellLabel->"In[22]:=",ExpressionUUID->"5cfe6ca1-59ae-4f68-ad16-5b1a5ebf41b0"],
+
+Cell[TextData[{
+ "Recall that the short hand //. stands for",
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ ButtonBox["ReplaceAllRepeated",
+  BaseStyle->"RefGuideLink"],
+ " which applies the replacement rules until the expression stops changing."
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"8444fd9f-3d18-435c-933c-190ad0717331"],
+
+Cell[TextData[{
+ StyleBox["We will animate the mass and spring system undergoing simple \
+harmonic motion. We will need to make four objects: a mass, a spring, a \
+surface for the mass to slide on, and a wall to anchor the spring to. We will \
+start with the mass which must oscillate with time. We will use the graphics \
+primitive",
+  FontSize->14],
+ StyleBox[" Rectangle",
+  FontSize->14,
+  FontWeight->"Bold"],
+ StyleBox[" to draw the mass. The syntax for",
+  FontSize->14],
+ StyleBox[" Rectangle",
+  FontSize->14,
+  FontWeight->"Bold"],
+ StyleBox[" is",
+  FontSize->14]
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"693daeb2-3740-4e6c-bfe4-b6a4a3a8d7c4"],
+
+Cell[BoxData[
+ RowBox[{"?", "Rectangle"}]], "Input",
+ AspectRatioFixed->
+  True,ExpressionUUID->"e519f1fa-c11d-40f3-b83b-01a335dd7e34"],
+
+Cell[TextData[{
+ StyleBox["The masses left edge is at x=1 and t=0 while its right edge is at \
+x=2 and t=0. It has a height of 1/2 and I have colored it red using",
+  FontSize->14],
+ StyleBox[" RGBColor",
+  FontSize->14,
+  FontWeight->"Bold"],
+ StyleBox[". Style directives such as",
+  FontSize->14],
+ StyleBox[" RGBColor",
+  FontSize->14,
+  FontWeight->"Bold"],
+ StyleBox[" must come before the graphics primitive. The style directives and \
+the graphics primitives are enclosed in a list and then passed to ",
+  FontSize->14],
+ StyleBox["Graphics",
+  FontSize->14,
+  FontWeight->"Bold"],
+ StyleBox[" or",
+  FontSize->14],
+ StyleBox[" Graphics3D",
+  FontSize->14,
+  FontWeight->"Bold"],
+ StyleBox[". ",
+  FontSize->14]
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"3dd3b486-0a88-4cf7-aed1-34ceab9a07f5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mass", "[", "t_", "]"}], ":=", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"1", ",", "0", ",", "0"}], "]"}], ",", 
+     RowBox[{"Rectangle", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"1", "+", 
+           RowBox[{"x", "[", "t", "]"}]}], "//.", "\[InvisibleSpace]", 
+          "oscillatorConditions"}], ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"2", "+", 
+           RowBox[{"x", "[", "t", "]"}]}], "//.", "\[InvisibleSpace]", 
+          "oscillatorConditions"}], ",", 
+         FractionBox["1", "2"]}], "}"}]}], "]"}]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{3.502621315178235*^9},
+ AspectRatioFixed->True,
+ CellLabel->"In[23]:=",ExpressionUUID->"f9683ac4-ab40-46ce-9eb2-e77b209e1da4"],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"mass", "[", "0", "]"}], "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[24]:=",ExpressionUUID->"15815a89-8207-42f3-b702-3e2366a31555"],
+
+Cell[TextData[StyleBox["Next, we make our surface. I have put the surface a \
+little bit below zero so that when we are all finished our mass rides on it. \
+I determined how far below zero I needed the surface by trial and error.",
+ FontSize->14]], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"7306f934-7f77-4e89-8565-508af89f69f0"],
+
+Cell[BoxData[
+ RowBox[{"?", "Line"}]], "Input",ExpressionUUID->"70e4b920-b963-4e53-b3ed-a8fb1286e778"],
+
+Cell[BoxData[
+ RowBox[{"surface", "=", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Thickness", "[", "0.05`", "]"}], ",", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"0", ",", "1", ",", "0"}], "]"}], ",", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"-", 
+           FractionBox["1", "20"]}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"3", ",", 
+          RowBox[{"-", 
+           FractionBox["1", "20"]}]}], "}"}]}], "}"}], "]"}]}], "}"}], 
+   "]"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[25]:=",ExpressionUUID->"7413a085-efcf-4b85-a8ce-569af68ca707"],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"surface", ",", 
+   RowBox[{"mass", "[", "0", "]"}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", "Automatic"}]}], "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[26]:=",ExpressionUUID->"03085151-108b-4cac-81bd-ec471f031547"],
+
+Cell["The next step is the attach our spring to the mass.", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"27bf3d91-0aef-49aa-af30-e780072e3fe3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"spring", "[", "t_", "]"}], ":=", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Thickness", "[", "0.015`", "]"}], ",", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          FractionBox["1", "4"]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"1", "+", 
+            RowBox[{"x", "[", "t", "]"}]}], "//.", "\[InvisibleSpace]", 
+           "oscillatorConditions"}], ",", 
+          FractionBox["1", "4"]}], "}"}]}], "}"}], "]"}]}], "}"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{3.502621339089942*^9},
+ AspectRatioFixed->True,
+ CellLabel->"In[27]:=",ExpressionUUID->"931b2731-bf2a-4e99-8b82-167eb2eb9ba8"],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"surface", ",", 
+   RowBox[{"mass", "[", 
+    FractionBox["\[Pi]", "2"], "]"}], ",", 
+   RowBox[{"spring", "[", 
+    FractionBox["\[Pi]", "2"], "]"}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", "Automatic"}]}], "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[28]:=",ExpressionUUID->"41074fff-60d1-401f-b152-bdf1f3a4a009"],
+
+Cell[TextData[StyleBox["Lastly, we make the wall and put everything together.",
+ FontSize->14]], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"5df964f4-e861-4fc4-9544-f3f72046f96e"],
+
+Cell[BoxData[
+ RowBox[{"wall", "=", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Thickness", "[", "0.05`", "]"}], ",", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"0", ",", "0", ",", "1"}], "]"}], ",", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"-", 
+           FractionBox["1", "20"]}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}]}], "}"}], "]"}]}], "}"}], 
+   "]"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[29]:=",ExpressionUUID->"014e55b2-23cd-4d41-8be8-23e10f96fc69"],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"surface", ",", 
+   RowBox[{"mass", "[", 
+    FractionBox["\[Pi]", "2"], "]"}], ",", 
+   RowBox[{"spring", "[", 
+    FractionBox["\[Pi]", "2"], "]"}], ",", "wall", ",", 
+   RowBox[{"AspectRatio", "\[Rule]", "Automatic"}]}], "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[30]:=",ExpressionUUID->"4445f349-b5e4-437c-9dc3-bfe0f708130f"],
+
+Cell["Now for the animation!", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"be34eeeb-2ad7-4ea3-8fc1-73454e1a19c0"],
+
+Cell[BoxData[
+ RowBox[{"ListAnimate", "[", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Show", "[", 
+     RowBox[{"surface", ",", 
+      RowBox[{"mass", "[", "t", "]"}], ",", 
+      RowBox[{"spring", "[", "t", "]"}], ",", "wall", ",", 
+      RowBox[{"AspectRatio", "\[Rule]", "Automatic"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"t", ",", "0", ",", "2", ",", 
+      FractionBox["1", "16"]}], "}"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5026213506816473`*^9, 3.5026213574817657`*^9}},
+ AspectRatioFixed->True,
+ CellLabel->"In[31]:=",ExpressionUUID->"cc80096e-3733-4b89-a854-1c8fbb1dafe0"],
+
+Cell["\<\
+We can keep track of how much of the total energy is kinetic energy and how \
+much is potential energy by drawing two rectangles whose heights are \
+proportional to the kinetic and potential energies respectively. The \
+rectangles are called \"KEbar\" and \"Ubar\" and are functions of time.\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"4f988b06-0515-47fe-a743-fc10d515b2a6"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"KEbar", "[", "t_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Graphics", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"RGBColor", "[", 
+        RowBox[{"1", ",", "0", ",", "0"}], "]"}], ",", 
+       RowBox[{"Rectangle", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"3.5", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"3.75", ",", 
+           RowBox[{"40", " ", 
+            RowBox[{"KE", "[", "t", "]"}]}]}], "}"}]}], "]"}]}], "}"}], "]"}],
+     "//.", "\[InvisibleSpace]", "oscillatorConditions"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Ubar", "[", "t_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Graphics", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"RGBColor", "[", 
+        RowBox[{"0", ",", "0", ",", "1"}], "]"}], ",", 
+       RowBox[{"Rectangle", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"3.25", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"3.5", ",", 
+           RowBox[{"40", " ", 
+            RowBox[{"U", "[", "t", "]"}]}]}], "}"}]}], "]"}]}], "}"}], "]"}], 
+    "//.", "\[InvisibleSpace]", "oscillatorConditions"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.502621389565815*^9, 3.502621392498612*^9}},
+ AspectRatioFixed->True,
+ CellLabel->"In[32]:=",ExpressionUUID->"4ad025a4-8030-49a1-af04-fb6b36f13e58"],
+
+Cell[TextData[{
+ "The two rectangles can be labeled by using the graphics primitive ",
+ ButtonBox["Text",
+  BaseStyle->"RefGuideLink"],
+ ". ",
+ StyleBox["Text[expression,{x,y}]",
+  FontWeight->"Bold"],
+ " is a graphics primitive that gives the printed form of the expression \
+centered at {x,y}. As with all graphics primitives you must make them \
+graphics objects before using them in ",
+ StyleBox["Show",
+  FontWeight->"Bold"],
+ ". The labels are called \"labelOne\" and \"labelTwo\"."
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"520a6069-a72c-40a9-8d2d-0188067d4701"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"labelOne", "=", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{"Text", "[", 
+     RowBox[{"\"\<KE\>\"", ",", 
+      RowBox[{"{", 
+       RowBox[{"3.625", ",", "0.5"}], "}"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"labelTwo", "=", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{"Text", "[", 
+     RowBox[{"\"\<PE\>\"", ",", 
+      RowBox[{"{", 
+       RowBox[{"3.3725", ",", "0.5"}], "}"}]}], "]"}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.502621484354167*^9, 3.502621560210559*^9}},
+ CellLabel->"In[34]:=",ExpressionUUID->"d64b538f-8243-4e76-bd24-22143722eb8b"],
+
+Cell["Our final animation is shown below.", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"b1533da6-ec91-47b9-bf9c-f5161a38ad51"],
+
+Cell[BoxData[
+ RowBox[{"ListAnimate", "[", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Show", "[", 
+     RowBox[{"surface", ",", 
+      RowBox[{"mass", "[", "t", "]"}], ",", 
+      RowBox[{"spring", "[", "t", "]"}], ",", "wall", ",", 
+      RowBox[{"KEbar", "[", "t", "]"}], ",", 
+      RowBox[{"Ubar", "[", "t", "]"}], ",", "labelOne", ",", "labelTwo", ",", 
+      
+      RowBox[{"AspectRatio", "\[Rule]", "Automatic"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"t", ",", "0", ",", "2", ",", 
+      FractionBox["1", "16"]}], "}"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.502621570650909*^9, 3.502621576322871*^9}},
+ AspectRatioFixed->True,
+ CellLabel->"In[36]:=",ExpressionUUID->"fe7c0d28-4213-49b4-bf48-cae1d44bc696"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Phase Space plots", "Subsubsection",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"f58181a4-15a2-40a3-921e-3f5cb92ff6a2"],
+
+Cell["\<\
+Another way of looking at the motion is to plot the particle's velocity \
+versus the particle's position. This is called a phase space plot. This is \
+useful because a particle undergoing simple harmonic motion will be at any \
+given position twice in a single period but will have different velocities \
+depending on whether it is moving to the right or to left (spring is \
+expanding or contracting). You can see this from the plot below. Notice that \
+the particle is at x=0 twice. Once at roughly t=0.5 seconds and once at \
+roughly t=1.5 seconds. When t=0.5 the particle has a velocity of 1.265 to the \
+left. At t=1.5 the particle has a velocity of 1.265 to the right.\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"cd20e135-133f-4ac5-8daf-5ba8f7ed5d68"],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Tooltip", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"x", "[", "t", "]"}], "//.", "\[InvisibleSpace]", 
+        "oscillatorConditions"}], ",", "\"\<x(t)\>\""}], "]"}], ",", 
+     RowBox[{"Tooltip", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"v", "[", "t", "]"}], "//.", "\[InvisibleSpace]", 
+        "oscillatorConditions"}], ",", "\"\<v(t)\>\""}], "]"}]}], "}"}], ",", 
+   
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "2"}], "}"}], ",", 
+   RowBox[{"PlotStyle", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"1", ",", "0", ",", "0"}], "]"}], ",", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0", ",", "0", ",", "1"}], "]"}]}], "}"}]}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<time\>\"", ",", "\"\<\>\""}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5026216294964046`*^9, 3.502621688711967*^9}},
+ AspectRatioFixed->True,
+ CellLabel->"In[37]:=",ExpressionUUID->"9cab9ef1-22ee-4f3c-9b66-e178b6e04397"],
+
+Cell[TextData[{
+ StyleBox[" We can make a phase space plot by using the function ",
+  FontSize->14],
+ StyleBox["ParametricPlot",
+  FontSize->14,
+  FontWeight->"Bold"],
+ StyleBox[". The syntax is",
+  FontSize->14]
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"a961475a-d170-4af1-9bd9-0b3d88c9fe05"],
+
+Cell[BoxData[
+ RowBox[{"?", "ParametricPlot"}]], "Input",
+ AspectRatioFixed->
+  True,ExpressionUUID->"f29883b7-07fc-4c3d-aab0-a0a854e6ee4f"],
+
+Cell["Our phase space plot is shown below.", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"4f95177a-0ed7-47c1-b0a6-3ae7f0f45c19"],
+
+Cell[BoxData[
+ RowBox[{"ParametricPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"x", "[", "t", "]"}], "//.", "\[InvisibleSpace]", 
+      "oscillatorConditions"}], ",", 
+     RowBox[{
+      RowBox[{"v", "[", "t", "]"}], "//.", "\[InvisibleSpace]", 
+      "oscillatorConditions"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "2"}], "}"}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<x\>\"", ",", "\"\<v\>\""}], "}"}]}]}], "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[38]:=",ExpressionUUID->"ef273fcd-1f47-4078-bad3-7ab5cc905956"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Damped Harmonic Motion", "Subsection",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"bf59fc0c-bda4-41f0-926c-0b8d3ac9894a"],
+
+Cell["\<\
+Up until now we have assumed that our oscillator does not lose any energy. \
+Thus, if our oscillator is a mass and spring system, it is one without \
+friction. If our oscillator is a circuit, it is a circuit without resistance. \
+Most real systems have some dissipative forces and undergo damped harmonic \
+motion. The equation of motion for an object undergoing damped harmonic \
+motion is  \
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"18bb12f5-a822-4058-87d3-17689cf6fd67"],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["d", "2"], "x"}], 
+     RowBox[{"d", " ", 
+      SuperscriptBox["t", "2"]}]], " ", "+", " ", 
+    RowBox[{"\[Gamma]", " ", 
+     FractionBox[
+      RowBox[{"d", " ", "x"}], 
+      RowBox[{"d", " ", "t"}]]}], "  ", "+", " ", 
+    RowBox[{
+     SuperscriptBox["\[Omega]", "2"], " ", "x"}]}], "=", " ", "0"}], 
+  TraditionalForm]],ExpressionUUID->"0ca85f2f-6666-4f03-9b81-6296cf1a0147"]], \
+"Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"800eed5a-559a-4b1f-9558-9dca604a598e"],
+
+Cell[TextData[{
+ "where \[Gamma] is the damping parameter. Notice that the dissipative force \
+is velocity dependent just as it is for air resistance. Translated into ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " our equation is"
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"9e22c502-44ac-4e41-97a3-7b8bd66c78ec"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", 
+  RowBox[{
+  "x", ",", "v", ",", "KE", ",", "U", ",", "\[Phi]", ",", "A", ",", " ", 
+   "c"}], "]"}], "\n", 
+ RowBox[{"dampedEquation", "=", 
+  RowBox[{
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"x", "[", "t", "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", " ", "2"}], "}"}]}], "]"}], "+", 
+   RowBox[{"\[Gamma]", " ", 
+    RowBox[{"D", "[", 
+     RowBox[{
+      RowBox[{"x", "[", "t", "]"}], ",", " ", "t"}], "]"}]}], "+", 
+   RowBox[{
+    SuperscriptBox["\[Omega]", "2"], " ", 
+    RowBox[{"x", "[", "t", "]"}]}]}]}]}], "Input",
+ CellChangeTimes->{{3.502621727432603*^9, 3.502621728833831*^9}},
+ AspectRatioFixed->True,
+ CellLabel->"In[39]:=",ExpressionUUID->"2dc225b1-19df-4840-b219-a56d2ec8a58a"],
+
+Cell["\<\
+To solve this equation we will guess that the solution is of the form \
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"8c31bbc9-f32c-4d45-86ee-daed97bcc6f2"],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"x", "(", "t", ")"}], "=", " ", 
+   RowBox[{"A", " ", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"B", " ", "t"}]], " ", 
+    RowBox[{"cos", "(", " ", 
+     RowBox[{
+      RowBox[{"c", " ", "t"}], " ", "+", " ", "\[Phi]"}], ")"}]}]}], 
+  TraditionalForm]],ExpressionUUID->"10516885-0319-4420-9d19-9f23fb6a42cf"]], \
+"Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"8e5caf91-7522-4bce-a875-68042602e3ea"],
+
+Cell[TextData[{
+ "There is no guarantee that this will work. It's a guess and we must \
+substitute our guess for x[t] into the equation and see if it works. This is \
+tedious to do by hand, but it is quite easy to do with ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". Our guess is"
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"5ecb9b16-1aba-49a4-b072-f0b4680fefcf"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"x", "[", "t_", "]"}], "=", 
+  RowBox[{"A", " ", 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"B", " ", "t"}]], " ", 
+   RowBox[{"Cos", "[", 
+    RowBox[{
+     RowBox[{"c", " ", "t"}], "+", "\[Phi]"}], "]"}]}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[41]:=",ExpressionUUID->"b062917f-c44a-43a1-8434-c4a9d6242a07"],
+
+Cell["\<\
+and putting this into the equation for the damped oscillator gives\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"8dcec8ef-2458-4b3a-90ff-6d96e7e6e700"],
+
+Cell[BoxData["dampedEquation"], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[42]:=",ExpressionUUID->"b69c2c75-7a57-45ec-a4d9-d4c8ef37b9bb"],
+
+Cell[TextData[{
+ "Notice that each term has a factor of A and a factor of Exp[B t] in front \
+of it. We can pull these factors out of the equation by using ",
+ StyleBox["Collect",
+  FontWeight->"Bold"],
+ ". "
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"ed7a06b7-799f-4ffc-8179-58d854c4bc9b"],
+
+Cell[BoxData[
+ RowBox[{"dampedEquation", "=", 
+  RowBox[{"Collect", "[", 
+   RowBox[{"dampedEquation", ",", 
+    RowBox[{"{", 
+     RowBox[{"A", ",", 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"B", " ", "t"}]]}], "}"}]}], "]"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[43]:=",ExpressionUUID->"b41358c8-ffce-403d-ba99-175ad0d35832"],
+
+Cell["\<\
+We want our damped equation to be equal to zero so we can discard the overall \
+factor of A Exp[B t]. What we are left with is the third part of the damped \
+equation.\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"cf5dc2c7-7afe-4bfb-9e08-f717de330177"],
+
+Cell[BoxData[
+ RowBox[{"dampedEquation", "\[LeftDoubleBracket]", "3", 
+  "\[RightDoubleBracket]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[44]:=",ExpressionUUID->"8b8e1b75-4f94-4173-9167-fc460cf59caf"],
+
+Cell["\<\
+We can collect the sine and the cosine terms together, which gives\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"99e0a3c5-9c5f-42a5-ae5b-0663e1439333"],
+
+Cell[BoxData[
+ RowBox[{"NewEquation", "=", 
+  RowBox[{"Collect", "[", 
+   RowBox[{
+    RowBox[{
+    "dampedEquation", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Sin", "[", 
+       RowBox[{
+        RowBox[{"c", " ", "t"}], "+", "\[Phi]"}], "]"}], ",", 
+      RowBox[{"Cos", "[", 
+       RowBox[{
+        RowBox[{"c", " ", "t"}], "+", "\[Phi]"}], "]"}]}], "}"}]}], 
+   "]"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[45]:=",ExpressionUUID->"88a14c5b-14c8-43f6-9982-ad63458fea84"],
+
+Cell["\<\
+The sine and the cosine are 90 degrees out of phase with each other. In other \
+words when the sine is zero, the cosine is one. Thus, the only way the \
+equation can equal zero is for the sine and cosine terms to vanish \
+separately. The coefficient of the sine term is\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"88dc3fa6-10a7-4edb-9500-98ad6b6e8cd7"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NewEquation", "\[LeftDoubleBracket]", 
+   RowBox[{"2", ",", "1"}], "\[RightDoubleBracket]"}], "//", 
+  "Simplify"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[46]:=",ExpressionUUID->"3263efdf-fb05-4e77-a578-288e66f2fab4"],
+
+Cell["and requiring that this vanishes gives", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"70c6a504-3f2a-4b8f-863b-00f5f29fd3d0"],
+
+Cell[BoxData[
+ RowBox[{"solution1", "=", 
+  RowBox[{"First", "[", 
+   RowBox[{"Solve", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"NewEquation", "\[LeftDoubleBracket]", 
+       RowBox[{"2", ",", "1"}], "\[RightDoubleBracket]"}], "==", "0"}], ",", 
+     "B"}], "]"}], "]"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[47]:=",ExpressionUUID->"54f83e16-8933-4a84-a70d-739fbd96a3bd"],
+
+Cell["\<\
+Thus B=-\[Gamma]/2. Putting this back into the coefficient of the cosine term \
+and requiring that this coefficient also vanishes giving two solutions for c.\
+\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"672ea22d-963d-4da5-9f16-19bf57cf1b3c"],
+
+Cell[BoxData[
+ RowBox[{"solution2", "=", 
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"NewEquation", "\[LeftDoubleBracket]", 
+        RowBox[{"1", ",", "1"}], "\[RightDoubleBracket]"}], "/.", 
+       "\[InvisibleSpace]", "solution1"}], ")"}], "==", "0"}], ",", "c"}], 
+   "]"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[48]:=",ExpressionUUID->"fa231623-dbe8-438b-91ff-50de116c1d8a"],
+
+Cell["\<\
+We want c to be a frequency, so we throw away the negative solution as \
+unphysical.  As a result, our guess solves the equation if\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"53a7b1dc-15cd-43be-921e-91cf22e56fe7"],
+
+Cell[BoxData[
+ RowBox[{"B", "=", 
+  RowBox[{"B", "/.", "\[InvisibleSpace]", "solution1"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[49]:=",ExpressionUUID->"13e5bcb2-1428-4cdf-9f84-45aa35542874"],
+
+Cell["and", "Text",ExpressionUUID->"3c573ea6-6107-48b8-953b-6cf279ac0159"],
+
+Cell[BoxData[
+ RowBox[{"c", "=", 
+  RowBox[{"c", "/.", "\[InvisibleSpace]", 
+   RowBox[{
+   "solution2", "\[LeftDoubleBracket]", "2", 
+    "\[RightDoubleBracket]"}]}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[50]:=",ExpressionUUID->"338ff308-8f98-4bb4-bfa4-1d4b300d4016"],
+
+Cell["\<\
+Notice that if the damping is small, c (which is often called \[Omega]') is \
+almost the same as \[Omega]. With these values for B and c our solution is\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"db9a853c-2b9d-4ba8-97b8-ec829cc2d301"],
+
+Cell[BoxData[
+ RowBox[{"x", "[", "t", "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[51]:=",ExpressionUUID->"6f88ea40-abbd-4068-abe6-0062375d393a"],
+
+Cell[TextData[{
+ "We still have to determine the meaning of the constants A and \[Phi]. They \
+are determined by the initial conditions. In fact x[0]=ACos[\[Phi]] just as \
+in the ",
+ StyleBox["un",
+  IgnoreSpellCheck->True],
+ "-damped case."
+}], "Text",
+ Evaluatable->False,
+ CellChangeTimes->{{3.81887119185991*^9, 3.818871225937436*^9}},
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"5dcae00c-3156-40da-82c8-2d89394186df"],
+
+Cell[BoxData[
+ RowBox[{"x", "[", "0", "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[52]:=",ExpressionUUID->"e00fe894-672b-4525-860d-9693f941992b"],
+
+Cell["\<\
+The phase angle \[Phi] is a little more complicated. The velocity is\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"c4e93890-9507-4d27-81ba-103255439284"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "v", "]"}]], "Input",
+ CellLabel->"In[53]:=",ExpressionUUID->"e9a45100-4e5f-4694-bd09-48f89ed6886f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"v", "[", "t_", "]"}], "=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"x", "[", "t", "]"}], ",", " ", "t"}], "]"}], "]"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[54]:=",ExpressionUUID->"c598d448-de3f-4a29-b106-b94b3c5f398c"],
+
+Cell["so the initial velocity is ", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"f5fa0637-e10f-43f7-8fa1-9d0b44990c35"],
+
+Cell[BoxData[
+ RowBox[{"v", "[", "0", "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[55]:=",ExpressionUUID->"07e47179-d12e-4616-b141-6bc14fbafb6a"],
+
+Cell["If we substitute A=x0/Cos[\[Phi]] into v[0] and simplify we get", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"e0527bcb-3122-4f38-98f6-fd317ef5c5bc"],
+
+Cell[BoxData[
+ RowBox[{"A", "=", 
+  FractionBox["x0", 
+   RowBox[{"Cos", "[", "\[Phi]", "]"}]]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[56]:=",ExpressionUUID->"872a33e9-e55e-4bab-b066-b2d0b20051bc"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"v", "[", "0", "]"}], "=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{"v", "[", "0", "]"}], "]"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[57]:=",ExpressionUUID->"b9e1bb0b-dc48-4ed1-a9d1-06aacdf166e4"],
+
+Cell["Solving this for the initial velocity in terms of \[Phi] gives", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"051da3a2-9bd8-4615-8a88-be0ba543e095"],
+
+Cell[BoxData[
+ RowBox[{"\[Phi]Solution", "=", 
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{"v0", "==", 
+     RowBox[{"v", "[", "0", "]"}]}], ",", "\[Phi]"}], "]"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[58]:=",ExpressionUUID->"6b98cb8b-22f0-47c5-b47c-3d7378c04b1d"],
+
+Cell["\<\
+Notice that there are multiple solutions for the phase angle since the \
+arctangent is multi-valued.  If the damping factor gamma is zero, we recover \
+our previous result.\
+\>", "Text",
+ Evaluatable->False,
+ CellChangeTimes->{
+  3.818871264985346*^9, {3.818871830851293*^9, 3.818871895390819*^9}, {
+   3.818871939055529*^9, 3.818871947622587*^9}},
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"898215c1-d2c0-468b-b1ea-1b641ae34e33"],
+
+Cell[BoxData[
+ RowBox[{"PowerExpand", "[", 
+  RowBox[{"\[Phi]Solution", "/.", 
+   RowBox[{"\[Gamma]", "\[Rule]", "0"}]}], "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[59]:=",ExpressionUUID->"1f0d4352-4a9f-43a5-950c-87336a97f354"],
+
+Cell["In general \[Phi] is given by", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"9edea3be-b78e-4be7-a378-dc152422f239"],
+
+Cell[BoxData[
+ RowBox[{"\[Phi]", "=", 
+  RowBox[{"\[Phi]", "/.", "\[Phi]Solution"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[60]:=",ExpressionUUID->"810bc0d6-a202-413b-b129-a66cb9831a94"],
+
+Cell[TextData[{
+ "All damped oscillators fall into one of three special cases:\n\na) If ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     FormBox[
+      RowBox[{"4", 
+       SuperscriptBox["\[Omega]", "2"]}],
+      TraditionalForm], "-", 
+     SuperscriptBox["\[Gamma]", "2"]}], ">", "0"}], TraditionalForm]],
+  ExpressionUUID->"a80a57e2-8015-4e81-a4f1-81604e53e262"],
+ ", the oscillator is underdamped \n\nb) If ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     FormBox[
+      RowBox[{"4", 
+       SuperscriptBox["\[Omega]", "2"]}],
+      TraditionalForm], "-", 
+     SuperscriptBox["\[Gamma]", "2"]}], "=", "0"}], TraditionalForm]],
+  ExpressionUUID->"b1648c1d-aeb0-4889-a2af-521da75ea6d9"],
+ ", the oscillator is critically damped \n\nc) If ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     FormBox[
+      RowBox[{"4", 
+       SuperscriptBox["\[Omega]", "2"]}],
+      TraditionalForm], "-", 
+     SuperscriptBox["\[Gamma]", "2"]}], "<", "0"}], TraditionalForm]],
+  ExpressionUUID->"4eeea9f1-101c-4fe1-97ff-ddf15e16cbd8"],
+ ", the oscillator overdamped. \n\nWe will look at each of these cases in \
+turn."
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"a61d12ba-8b55-4242-a3f3-2faed73f3a03"],
+
+Cell[CellGroupData[{
+
+Cell["UnderDamping", "Subsubsection",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"756b0250-1a61-48f2-a4ac-51f1e660905f"],
+
+Cell["If \[Gamma]<2\[Omega]  the oscillator is underdamped.", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"6e6bf170-0b2a-4121-8a13-cf0c1ef4449a"],
+
+Cell[BoxData[
+ RowBox[{"UnderDampedConditions", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"x0", "\[Rule]", ".1"}], ",", 
+    RowBox[{"m", "\[Rule]", ".1"}], ",", 
+    RowBox[{"\[Omega]", "\[Rule]", 
+     SqrtBox[
+      FractionBox["k", "m"]]}], ",", 
+    RowBox[{"v0", "\[Rule]", "0"}], ",", 
+    RowBox[{"k", "\[Rule]", "1"}], ",", 
+    RowBox[{"\[Gamma]", "\[Rule]", ".1"}]}], "}"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[61]:=",ExpressionUUID->"fe5990ec-26a9-4c49-8868-6817403de186"],
+
+Cell["\<\
+Notice that the motion is given by an oscillatory piece (the cosine) damped \
+by an exponential \
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"d2c1c881-3a55-429b-853f-07e71d52ee1a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"x", "[", "t", "]"}], "//.", "\[InvisibleSpace]", 
+  "UnderDampedConditions"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[62]:=",ExpressionUUID->"0fa82a26-b221-42e4-9af5-05f51618367c"],
+
+Cell[BoxData[
+ RowBox[{"FullForm", "[", 
+  RowBox[{
+   RowBox[{"x", "[", "t", "]"}], "//.", "\[InvisibleSpace]", 
+   "UnderDampedConditions"}], "]"}]], "Input",
+ CellChangeTimes->{{3.818872127470438*^9, 3.818872146406872*^9}},
+ CellLabel->"In[99]:=",ExpressionUUID->"c5b31ff3-c242-47df-80a8-d17c22fdd37a"],
+
+Cell[TextData[{
+ "In order to plot the result we need to pick a value for ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["c", "1"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "cb16e68e-f6e2-4419-bb36-435c1a266d1e"],
+ ". This is due with a replacement rule and I have chosen ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["c", "1"], "=", "0"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "97a32123-d561-4608-b72f-57459e2b601b"],
+ ". Internally ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["c", "1"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "fcb2738b-32c0-40de-a09c-efb4d5e0dd59"],
+ "is C[1] as you can see by using FullForm.  "
+}], "Text",
+ CellChangeTimes->{{3.8188719634822197`*^9, 
+  3.818872120724154*^9}},ExpressionUUID->"3a358656-cb65-4db0-a5b6-\
+adc334a536dc"],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"x", "[", "t", "]"}], "//.", "\[InvisibleSpace]", 
+     "UnderDampedConditions"}], "/.", 
+    RowBox[{
+     RowBox[{"C", "[", "1", "]"}], "\[Rule]", "0"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "10"}], "}"}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<UnderDamping\>\""}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<x\>\""}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.81887131055142*^9, 3.8188713223776627`*^9}, {
+  3.81887135805449*^9, 3.818871362807559*^9}, {3.818872162103551*^9, 
+  3.81887216694958*^9}},
+ AspectRatioFixed->True,
+ CellLabel->
+  "In[101]:=",ExpressionUUID->"f76eba57-00f3-454a-80d0-25eae0407ba0"],
+
+Cell["\<\
+We can plot the damping envelope which is Exp[(-\[Gamma]/2)t] along with the \
+position of the oscillator.\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"267d1dca-857d-4e04-8840-4c5335c3d2f6"],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"x0", " ", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"B", " ", "t"}]]}], "//.", "\[InvisibleSpace]", 
+      "UnderDampedConditions"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"x", "[", "t", "]"}], "//.", "\[InvisibleSpace]", 
+       "UnderDampedConditions"}], "/.", 
+      RowBox[{
+       RowBox[{"C", "[", "1", "]"}], "\[Rule]", "0"}]}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "x0"}], " ", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"B", " ", "t"}]]}], "//.", "\[InvisibleSpace]", 
+      "UnderDampedConditions"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "20"}], "}"}], ",", 
+   RowBox[{"PlotStyle", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0", ",", "1", ",", "0"}], "]"}], ",", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"1", ",", "0", ",", "0"}], "]"}]}], "}"}]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<UnderDamping\>\""}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<x\>\""}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.818871413191136*^9, 3.818871417664126*^9}},
+ AspectRatioFixed->True,
+ CellLabel->"In[69]:=",ExpressionUUID->"4c17fc74-73b4-48d2-9169-5b78a4df5670"],
+
+Cell["\<\
+The phase space plot for the damped oscillator is very different from the \
+phase space plot for the undamped oscillator. The motion of the undamped \
+oscillator is periodic, and as a result the phase space plot is closed.  The \
+damped oscillator's motion is not periodic, therefore its phase plot is not \
+closed. The phase space plot spirals in as the particle loses energy.\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"2465cbd5-11e6-4a7c-bc0f-9df5a358c0b6"],
+
+Cell[BoxData[
+ RowBox[{"ParametricPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"First", "[", 
+        RowBox[{"x", "[", "t", "]"}], "]"}], "//.", "\[InvisibleSpace]", 
+       "UnderDampedConditions"}], "/.", 
+      RowBox[{
+       RowBox[{"C", "[", "1", "]"}], "\[Rule]", "0"}]}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"First", "[", 
+        RowBox[{"v", "[", "t", "]"}], "]"}], "//.", "\[InvisibleSpace]", 
+       "UnderDampedConditions"}], "/.", 
+      RowBox[{
+       RowBox[{"C", "[", "1", "]"}], "\[Rule]", "0"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "10"}], "}"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<x\>\"", ",", "\"\<v\>\""}], "}"}]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<UnderDamping\>\""}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.818871425190648*^9, 3.81887144440318*^9}, {
+  3.818871651955844*^9, 3.818871676570771*^9}},
+ AspectRatioFixed->True,
+ CellLabel->"In[87]:=",ExpressionUUID->"e1ade5d3-adc6-4c0f-ab75-3e4877eeb649"],
+
+Cell[TextData[StyleBox["Try a few different values of \[Gamma] to see what \
+happens to the plots.  Check to see that your result reduces to the previous \
+(UNDAMPED) result for \[Gamma]=0.",
+ FontSize->14]], "Text",ExpressionUUID->"01a70049-170d-4eec-a531-\
+c44afa8f18dc"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Critical Damping", "Subsubsection",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"2f8f3cd2-3de3-4131-9898-95cabb888897"],
+
+Cell[TextData[{
+ "If \[Gamma] =2\[Omega] the oscillator is said to be critically damped. When \
+the oscillator is critically damped the ",
+ Cell[BoxData[
+  FormBox[
+   SqrtBox[
+    RowBox[{
+     RowBox[{"4", 
+      SuperscriptBox["\[Omega]", "2"]}], "-", 
+     SuperscriptBox["\[Gamma]", "2"]}]], TraditionalForm]],ExpressionUUID->
+  "ea788771-f7c5-4fb0-bbe4-c3fb4d59d5b9"],
+ "  term is zero. The solution is this case is "
+}], "Text",
+ Evaluatable->False,
+ CellChangeTimes->{{3.502622293621586*^9, 3.502622322341228*^9}},
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"0988f79b-b930-4f73-8bde-ca01acd21e87"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.502622348723631*^9, 
+  3.502622363847946*^9}},ExpressionUUID->"89948db1-37a7-4a93-8526-\
+633038bdfda5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"xCritical", "[", "t_", "]"}], "=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"x0", "+", 
+     RowBox[{"b", " ", "t"}]}], ")"}], 
+   RowBox[{"Exp", "[", 
+    RowBox[{
+     RowBox[{"-", "\[Gamma]"}], " ", 
+     RowBox[{"t", "/", "2"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.50262232425238*^9, 3.50262236659262*^9}, {
+   3.502622613193709*^9, 3.502622631713499*^9}, {3.502622834849859*^9, 
+   3.502622838745586*^9}, 3.502622875396893*^9, 3.5026230429231377`*^9},
+ CellLabel->"In[72]:=",ExpressionUUID->"a057e7bf-b377-43e7-9237-747035dd5430"],
+
+Cell[TextData[{
+ "where ",
+ Cell[BoxData[
+  FormBox["x0", TraditionalForm]],ExpressionUUID->
+  "d7ef4ec0-e968-41ad-8a01-5d4ee674dc66"],
+ " and v0 are fixed by the initial conditions. Putting ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"t", "=", "0"}], TraditionalForm]],ExpressionUUID->
+  "a3f51456-6108-485b-9a6d-bbeca77125b3"],
+ " we see that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x0", "=", 
+    RowBox[{"x", "(", "0", ")"}]}], TraditionalForm]],ExpressionUUID->
+  "774cf141-9249-4cb1-8aeb-0b7744528eeb"],
+ " and if we take a derivative we see that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"v", "(", "0", ")"}], "=", 
+    RowBox[{"b", "-", 
+     RowBox[{"\[Gamma]", " ", 
+      RowBox[{
+       RowBox[{"x", "(", "0", ")"}], "/", "2"}]}]}]}], TraditionalForm]],
+  ExpressionUUID->"a282724c-a5ad-47b8-8413-a1fa96b395c6"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.502622669410281*^9, 3.502622712451292*^9}, {
+  3.5026227568204823`*^9, 3.502622858846534*^9}, {3.502623026722472*^9, 
+  3.50262302672255*^9}, {3.502623058683239*^9, 
+  3.5026230993516407`*^9}},ExpressionUUID->"bc4ab15e-9adb-41aa-9a9a-\
+21ce2a58b788"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"vCritical", "[", "t_", "]"}], "=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"xCritical", "[", "t", "]"}], ",", " ", "t"}], "]"}], 
+   "]"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[73]:=",ExpressionUUID->"9537c4b6-68c4-4520-887d-b56a93d5ceef"],
+
+Cell[BoxData[
+ RowBox[{"Simplify", "[", 
+  RowBox[{"vCritical", "[", "0", "]"}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.502622922757518*^9, {3.502622991382695*^9, 3.502622995910741*^9}},
+ CellLabel->"In[74]:=",ExpressionUUID->"970dd47c-20a2-4852-9c3d-2e2a85ce063c"],
+
+Cell["So in terms of v0 and x0 we have ", "Text",
+ CellChangeTimes->{{3.502623152939917*^9, 
+  3.502623164740016*^9}},ExpressionUUID->"916f7716-8ea3-42b2-8621-\
+266782a8a646"],
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"v0", "==", 
+    RowBox[{"Simplify", "[", 
+     RowBox[{"vCritical", "[", "0", "]"}], "]"}]}], ",", "b"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.502623119028949*^9, 3.502623133756489*^9}},
+ CellLabel->"In[75]:=",ExpressionUUID->"6f90bd5a-0fe0-49e5-8036-f532de3711fd"],
+
+Cell["or", "Text",
+ CellChangeTimes->{{3.502623211678289*^9, 
+  3.502623211893746*^9}},ExpressionUUID->"fc6cd5f3-d871-45a7-b0e9-\
+2989f22d7519"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"xCritical", "[", "t_", "]"}], "=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    RowBox[{"xCritical", "[", "t", "]"}], "/.", 
+    RowBox[{"Solve", "[", 
+     RowBox[{
+      RowBox[{"v0", "==", 
+       RowBox[{"Simplify", "[", 
+        RowBox[{"vCritical", "[", "0", "]"}], "]"}]}], ",", "b"}], "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.502623176175741*^9, 3.502623228112834*^9}},
+ CellLabel->"In[76]:=",ExpressionUUID->"614c89e6-d10c-4eae-a67a-3a5fef8471c4"],
+
+Cell["and", "Text",
+ CellChangeTimes->{{3.5026233257717857`*^9, 
+  3.502623326346149*^9}},ExpressionUUID->"f3111c64-177e-4281-bffc-\
+304cfd76a303"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"vCritical", "[", "t_", "]"}], "=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    RowBox[{"vCritical", "[", "t", "]"}], "/.", 
+    RowBox[{"Solve", "[", 
+     RowBox[{
+      RowBox[{"v0", "==", 
+       RowBox[{"Simplify", "[", 
+        RowBox[{"vCritical", "[", "0", "]"}], "]"}]}], ",", "b"}], "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.502623335165659*^9, 3.502623339462726*^9}},
+ CellLabel->"In[77]:=",ExpressionUUID->"e5ce3f33-b7c5-43c2-92d1-b9fa114d9b7d"],
+
+Cell["\<\
+The starting conditions for our critically damped oscillator are\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"8d880c9e-5f47-411c-84d5-65f91ca0ca21"],
+
+Cell[BoxData[
+ RowBox[{"CriticalDampedConditions", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"x0", "\[Rule]", "0.1"}], ",", 
+    RowBox[{"\[Gamma]", "\[Rule]", " ", 
+     RowBox[{"2", 
+      SqrtBox["0.1"]}]}], ",", " ", 
+    RowBox[{"v0", "\[Rule]", "0"}]}], "}"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[78]:=",ExpressionUUID->"0f7058a6-3906-457f-ba71-b083fbf625b4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"xCritical", "[", "t", "]"}], "/.", "\[InvisibleSpace]", 
+  "CriticalDampedConditions"}]], "Input",
+ CellLabel->"In[79]:=",ExpressionUUID->"389073af-02eb-4d43-b691-b9c490fb28a0"],
+
+Cell["\<\
+Notice that the critically damped oscillator does not oscillate but slowly \
+moves toward the origin. \
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"e8941f9b-a95c-4dfe-b671-c5d41b6973c3"],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"xCritical", "[", "t", "]"}], "/.", "\[InvisibleSpace]", 
+    "CriticalDampedConditions"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "20"}], "}"}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Critical Damping\>\""}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<x\>\""}], "}"}]}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[80]:=",ExpressionUUID->"51621604-2ba7-454b-b252-e8bb2f93ced6"],
+
+Cell[TextData[{
+ "The velocity of the critically damped oscillator  starts at ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "0"], TraditionalForm]],ExpressionUUID->
+  "006e6c1c-1eaa-463c-9463-4707a0d7cd03"],
+ " and then slowly dies off. "
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"e85963b8-e727-4944-85df-8a584998d753"],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"vCritical", "[", "t", "]"}], "/.", "\[InvisibleSpace]", 
+    "CriticalDampedConditions"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "20"}], "}"}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Critical Damping\>\""}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<v\>\""}], "}"}]}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[81]:=",ExpressionUUID->"7f1f6e7a-bb0f-4468-98d1-f6c8d394f989"],
+
+Cell["\<\
+The phase space plot shows the particle losing energy. The particle will end \
+up at x=0 with zero velocity.\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"533711dc-07a9-423f-b2d4-04b722aed3b1"],
+
+Cell[BoxData[
+ RowBox[{"ParametricPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"First", "[", 
+       RowBox[{"xCritical", "[", "t", "]"}], "]"}], "/.", "\[InvisibleSpace]",
+       "CriticalDampedConditions"}], ",", 
+     RowBox[{
+      RowBox[{"First", "[", 
+       RowBox[{"vCritical", "[", "t", "]"}], "]"}], "/.", "\[InvisibleSpace]",
+       "CriticalDampedConditions"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "20"}], "}"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<x\>\"", ",", "\"\<v\>\""}], "}"}]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Critical Damping\>\""}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.8188715592729607`*^9, 3.8188715817993526`*^9}, {
+  3.818871691052647*^9, 3.818871691419383*^9}},
+ AspectRatioFixed->True,
+ CellLabel->"In[88]:=",ExpressionUUID->"875a888e-1069-4236-a4f8-c7f1a18c5f82"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["OverDamping", "Subsubsection",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"7d405533-4a60-4c04-a372-83fcbd9496f7"],
+
+Cell["\<\
+If \[Gamma]>2\[Omega] the oscillator is overdamped. The conditions given \
+below are for a slightly overdamped oscillator.\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"a2721f52-f2a2-429f-8c65-d5b04acd63b0"],
+
+Cell[BoxData[
+ RowBox[{"OverDampedConditions", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"x0", "\[Rule]", ".1"}], ",", 
+    RowBox[{"m", "\[Rule]", ".1"}], ",", 
+    RowBox[{"\[Omega]", "\[Rule]", 
+     SqrtBox[
+      FractionBox["k", "m"]]}], ",", 
+    RowBox[{"v0", "\[Rule]", "0"}], ",", 
+    RowBox[{"k", "\[Rule]", "1"}], ",", 
+    RowBox[{"\[Gamma]", "\[Rule]", 
+     RowBox[{"2.1", "\[Omega]"}]}]}], "}"}]}]], "Input",
+ AspectRatioFixed->True,
+ CellLabel->"In[89]:=",ExpressionUUID->"809c08c4-a0c1-47e3-9073-64f53819a4ae"],
+
+Cell[TextData[{
+ "Plotting the position and velocity of the object shows that the motion has \
+the same basic features as in the critically damped cases but that the \
+damping is much faster.  The function ",
+ ButtonBox["Chop",
+  BaseStyle->"RefGuideLink"],
+ " has been used to eliminate small imaginary quantities that arise because \
+machine arithmetic is done to only 16 places."
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"022eb5f0-73af-4fe2-b60b-6d43ce780f81"],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"x", "[", "t", "]"}], "//.", "\[InvisibleSpace]", 
+     "OverDampedConditions"}], "/.", 
+    RowBox[{
+     RowBox[{"C", "[", "1", "]"}], "->", "0"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "3"}], "}"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<x\>\""}], "}"}]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<OverDamping\>\""}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.818871740203919*^9, 3.8188717525527363`*^9}},
+ AspectRatioFixed->True,
+ CellLabel->"In[93]:=",ExpressionUUID->"e424eb5c-a730-4f86-a0aa-4d07bebb8e61"],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"Simplify", "[", 
+    RowBox[{"Chop", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"v", "[", "t", "]"}], "//.", "\[InvisibleSpace]", 
+       "OverDampedConditions"}], "/.", 
+      RowBox[{
+       RowBox[{"C", "[", "1", "]"}], "\[Rule]", "0"}]}], "]"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "2"}], "}"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<v\>\""}], "}"}]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<OverDamping\>\""}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.818871770437292*^9, 3.818871773397978*^9}},
+ AspectRatioFixed->True,
+ CellLabel->"In[94]:=",ExpressionUUID->"5fd08af2-c7ed-4315-9350-d014f329a2ec"],
+
+Cell[BoxData[
+ RowBox[{"ParametricPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"First", "[", 
+        RowBox[{"x", "[", "t", "]"}], "]"}], "//.", "\[InvisibleSpace]", 
+       "OverDampedConditions"}], "/.", 
+      RowBox[{
+       RowBox[{"C", "[", "1", "]"}], "\[Rule]", "0"}]}], ",", 
+     RowBox[{"Chop", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"First", "[", 
+         RowBox[{"v", "[", "t", "]"}], "]"}], "//.", "\[InvisibleSpace]", 
+        "OverDampedConditions"}], "/.", 
+       RowBox[{
+        RowBox[{"C", "[", "1", "]"}], "\[Rule]", "0"}]}], "]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "2"}], "}"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<x\>\"", ",", "\"\<v\>\""}], "}"}]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<OverDamping\>\""}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.8188717807725897`*^9, 3.818871791591036*^9}},
+ AspectRatioFixed->True,
+ CellLabel->"In[96]:=",ExpressionUUID->"b151a72c-d1c0-421b-92f7-1fb6762e5c8a"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Exercises", "Section",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"569e70f3-a99f-46b2-bde2-b35e4bffdec1"],
+
+Cell[CellGroupData[{
+
+Cell["Problem One", "Subsection",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"98a22333-b5df-4ac5-b216-5e15f8790f87"],
+
+Cell["\<\
+From the following \"data\" find the starting conditions (x0 and v0), the \
+angular frequency and the period of the oscillator. What is the phase angle \
+of the oscillator? What is A, the amplitude? Like all real data this data is \
+not perfect but contains some \"experimental\" error. You may use any method \
+that you like to answers these questions.\
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"c8a8b237-984b-4d68-84ad-9ca31a32f953"],
+
+Cell[CellGroupData[{
+
+Cell["Data Set One", "Subsubsection",ExpressionUUID->"d526ce92-cf35-4ef0-8592-59a6bee1bee5"],
+
+Cell[BoxData[
+ RowBox[{"dataSet1", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0.5007776925563694"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0.5", ",", "0.07742815827440693"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1.", ",", 
+      RowBox[{"-", "0.413584076045498"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1.5", ",", 
+      RowBox[{"-", "0.970880077628931"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2.", ",", 
+      RowBox[{"-", "1.427905897450215"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2.5", ",", 
+      RowBox[{"-", "1.614187578884817"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3.", ",", 
+      RowBox[{"-", "1.873309477976028"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3.5", ",", 
+      RowBox[{"-", "2.125613127508216"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4.", ",", 
+      RowBox[{"-", "2.077313469733259"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4.5", ",", 
+      RowBox[{"-", "2.225554012692775"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"5.", ",", 
+      RowBox[{"-", "2.061611821977329"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"5.5", ",", 
+      RowBox[{"-", "1.749505039520971"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"6.", ",", 
+      RowBox[{"-", "1.247817516855952"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"6.5", ",", 
+      RowBox[{"-", "0.985048477974823"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"7.", ",", 
+      RowBox[{"-", "0.3159756622310341"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"7.5", ",", "0.1643852283418942"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"8.", ",", "0.624324772578878"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"8.5", ",", "1.096653472449683"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"9.", ",", "1.55835001695052"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"9.5", ",", "2.012382217257147"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"10.", ",", "2.233827000161716"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"10.5", ",", "2.359710166791859"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"11.", ",", "2.419682428405658"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"11.5", ",", "2.304856409123272"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"12.", ",", "2.25886573337408"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"12.5", ",", "1.859750478068737"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"13.", ",", "1.48342571348667"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"13.5", ",", "1.06579772626519"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"14.", ",", "0.7267722015857766"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"14.5", ",", "0.1612622907381281"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"15.", ",", 
+      RowBox[{"-", "0.3812241116005161"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"15.5", ",", 
+      RowBox[{"-", "0.7732634623668103"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"16.", ",", 
+      RowBox[{"-", "1.17744653711769"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"16.5", ",", 
+      RowBox[{"-", "1.6508772881197"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"17.", ",", 
+      RowBox[{"-", "1.962422370149177"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"17.5", ",", 
+      RowBox[{"-", "2.090302143351792"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"18.", ",", 
+      RowBox[{"-", "2.267216994175503"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"18.5", ",", 
+      RowBox[{"-", "2.158067825327134"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"19.", ",", 
+      RowBox[{"-", "1.969035179061759"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"19.5", ",", 
+      RowBox[{"-", "1.629114965868283"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"20.", ",", 
+      RowBox[{"-", "1.336508990290723"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"20.5", ",", 
+      RowBox[{"-", "0.835208360401679"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"21.", ",", 
+      RowBox[{"-", "0.3514165153633562"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"21.5", ",", "0.1452373685185685"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"22.", ",", "0.6510632973657097"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"22.5", ",", "1.013401529531922"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"23.", ",", "1.464601152454333"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"23.5", ",", "1.892557058408631"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"24.", ",", "2.059083658448213"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"24.5", ",", "2.252665499155034"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"25.", ",", "2.358012070433671"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"25.5", ",", "2.36307066555448"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"26.", ",", "2.201601457443672"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"26.5", ",", "2.012836180050034"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"27.", ",", "1.729172138657275"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"27.5", ",", "1.257514195492626"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"28.", ",", "0.7374704040637625"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"28.5", ",", "0.1533556902541086"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"29.", ",", 
+      RowBox[{"-", "0.2627556743819337"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"29.5", ",", 
+      RowBox[{"-", "0.853631191599124"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"30.", ",", 
+      RowBox[{"-", "1.234658946971961"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"30.5", ",", 
+      RowBox[{"-", "1.50473605361065"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"31.", ",", 
+      RowBox[{"-", "1.984231016008978"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"31.5", ",", 
+      RowBox[{"-", "2.105619747956838"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"32.", ",", 
+      RowBox[{"-", "2.063942531348357"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"32.5", ",", 
+      RowBox[{"-", "2.249722143635239"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"33.", ",", 
+      RowBox[{"-", "2.048729763297899"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"33.5", ",", 
+      RowBox[{"-", "1.719335929553208"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"34.", ",", 
+      RowBox[{"-", "1.500065698979411"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"34.5", ",", 
+      RowBox[{"-", "0.925258916057525"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"35.", ",", 
+      RowBox[{"-", "0.4065005216048198"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"35.5", ",", "0.1216557054449484"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"36.", ",", "0.6276647313931692"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"36.5", ",", "1.016133168453524"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"37.", ",", "1.477957914315689"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"37.5", ",", "1.83822731987168"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"38.", ",", "2.139743723755296"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"38.5", ",", "2.416103980648914"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"39.", ",", "2.453236781637697"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"39.5", ",", "2.454596086273386"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"40.", ",", "2.36473183501149"}], "}"}]}], "}"}]}]], "Input",
+ AspectRatioFixed->
+  True,ExpressionUUID->"b3400e5a-0115-4818-b2db-f12521efc3a2"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Problem Two", "Subsection",ExpressionUUID->"0c8bfe84-fce3-447d-89ef-c06030c43105"],
+
+Cell["\<\
+ From the following \"data\" find the starting conditions (x0 and v0), the \
+angular frequency, and the period of the oscillator. This is a damped \
+oscillator. What is the phase angle of the oscillator? What is A, the \
+amplitude?  What is the damping parameter \[Gamma]?  Like all real data this \
+data is not perfect but contains some \"experimental\" error. You may use any \
+method that you like to answers these questions. \
+\>", "Text",
+ Evaluatable->False,
+ AspectRatioFixed->True,
+ FontSize->14,ExpressionUUID->"12854818-9235-429c-93f3-bd0a9ff2f910"],
+
+Cell[CellGroupData[{
+
+Cell["Data Set Two", "Subsubsection",ExpressionUUID->"c7d45355-379d-4f2a-8a72-72fae71a98a8"],
+
+Cell[BoxData[
+ RowBox[{"dataSet2", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0.3193722795950542"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0.1", ",", "0.3550170947895908"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0.2", ",", "0.359319911305495"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0.3", ",", "0.3257610184406725"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0.4", ",", "0.2472255265198468"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0.5", ",", "0.1716209379381588"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0.6", ",", "0.06864677926733205"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0.7", ",", 
+      RowBox[{"-", "0.02861740736192995"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0.8", ",", 
+      RowBox[{"-", "0.1214332836364579"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0.9", ",", 
+      RowBox[{"-", "0.2125010299644887"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1.", ",", 
+      RowBox[{"-", "0.2666055454308553"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1.1", ",", 
+      RowBox[{"-", "0.2920439474515537"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1.2", ",", 
+      RowBox[{"-", "0.3042094508765891"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1.3", ",", 
+      RowBox[{"-", "0.2684347604534956"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1.4", ",", 
+      RowBox[{"-", "0.2028448636084926"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1.5", ",", 
+      RowBox[{"-", "0.1336555616840449"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1.6", ",", 
+      RowBox[{"-", "0.03641367813992585"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1.7", ",", "0.06066870100805117"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1.8", ",", "0.155640536898264"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1.900000000000001", ",", "0.2263182530489035"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2.", ",", "0.2753900119946367"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2.1", ",", "0.3073963958486089"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2.200000000000001", ",", "0.3045533742560063"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2.300000000000001", ",", "0.2785698195756387"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2.400000000000001", ",", "0.216576526178764"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2.500000000000001", ",", "0.1465178699416696"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2.600000000000001", ",", "0.05729247134027969"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2.700000000000001", ",", 
+      RowBox[{"-", "0.04955890944874731"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2.800000000000001", ",", 
+      RowBox[{"-", "0.1208789872280683"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2.900000000000001", ",", 
+      RowBox[{"-", "0.1930059509388532"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3.000000000000001", ",", 
+      RowBox[{"-", "0.2392471120378638"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3.100000000000001", ",", 
+      RowBox[{"-", "0.260499747126543"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3.200000000000001", ",", 
+      RowBox[{"-", "0.2490832090930726"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3.300000000000002", ",", 
+      RowBox[{"-", "0.2130392278057528"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3.400000000000002", ",", 
+      RowBox[{"-", "0.1629783669149952"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3.500000000000002", ",", 
+      RowBox[{"-", "0.0960278654438621"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3.600000000000002", ",", 
+      RowBox[{"-", "0.02059796126475917"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3.700000000000002", ",", "0.06282856280795223"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3.800000000000002", ",", "0.1284870816258542"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3.900000000000002", ",", "0.1975042417853844"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4.000000000000002", ",", "0.2551508112561441"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4.100000000000002", ",", "0.2740458531010875"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4.200000000000001", ",", "0.2524979789824213"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4.300000000000001", ",", "0.2334220716040493"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4.400000000000001", ",", "0.1764898117704854"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4.5", ",", "0.1041105570268226"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4.6", ",", "0.03848996565505525"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4.7", ",", 
+      RowBox[{"-", "0.03189902904900295"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4.799999999999999", ",", 
+      RowBox[{"-", "0.1018271691448462"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4.899999999999999", ",", 
+      RowBox[{"-", "0.1694826890669834"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4.999999999999999", ",", 
+      RowBox[{"-", "0.1952714085061705"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"5.099999999999998", ",", 
+      RowBox[{"-", "0.2126367167465257"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"5.199999999999998", ",", 
+      RowBox[{"-", "0.2169753344139136"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"5.299999999999998", ",", 
+      RowBox[{"-", "0.1949171236102164"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"5.399999999999997", ",", 
+      RowBox[{"-", "0.1356387967891012"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"5.499999999999997", ",", 
+      RowBox[{"-", "0.07582428358441352"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"5.599999999999996", ",", "0.0006895649657628067"}], "}"}], ",", 
+    
+    RowBox[{"{", 
+     RowBox[{"5.699999999999996", ",", "0.05852451279631652"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"5.799999999999996", ",", "0.1369773763701157"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"5.899999999999995", ",", "0.1897151584489439"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"5.999999999999995", ",", "0.2105572844421678"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"6.099999999999995", ",", "0.2354278229762269"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"6.199999999999994", ",", "0.2271692765833738"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"6.299999999999994", ",", "0.1932538066724886"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"6.399999999999994", ",", "0.1442873122054465"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"6.499999999999993", ",", "0.0975233399219265"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"6.599999999999993", ",", "0.02291881129180233"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"6.699999999999993", ",", 
+      RowBox[{"-", "0.03362721276600639"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"6.799999999999992", ",", 
+      RowBox[{"-", "0.089557876366281"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"6.899999999999992", ",", 
+      RowBox[{"-", "0.1437815405703866"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"6.999999999999992", ",", 
+      RowBox[{"-", "0.1682840271932921"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"7.099999999999991", ",", 
+      RowBox[{"-", "0.1768641959918271"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"7.199999999999991", ",", 
+      RowBox[{"-", "0.190256758937183"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"7.29999999999999", ",", 
+      RowBox[{"-", "0.1592448465664785"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"7.39999999999999", ",", 
+      RowBox[{"-", "0.0974361710199097"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"7.49999999999999", ",", 
+      RowBox[{"-", "0.06394978199565939"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"7.599999999999989", ",", "0.01077317120905434"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"7.699999999999989", ",", "0.05665892786622928"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"7.799999999999989", ",", "0.1181335805450456"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"7.899999999999988", ",", "0.1670046399006054"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"7.999999999999988", ",", "0.2018569312069027"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"8.09999999999999", ",", "0.2095899862778532"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"8.19999999999999", ",", "0.1936482854944579"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"8.29999999999999", ",", "0.1723479125514689"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"8.39999999999999", ",", "0.1274452355013285"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"8.49999999999999", ",", "0.0634990806764053"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"8.59999999999999", ",", "0.02591076815416984"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"8.69999999999999", ",", 
+      RowBox[{"-", "0.04395095830128753"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"8.79999999999999", ",", 
+      RowBox[{"-", "0.0942399345852132"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"8.89999999999998", ",", 
+      RowBox[{"-", "0.132347480240578"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"8.99999999999998", ",", 
+      RowBox[{"-", "0.1534342598879324"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"9.09999999999998", ",", 
+      RowBox[{"-", "0.1589631836216739"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"9.19999999999998", ",", 
+      RowBox[{"-", "0.1531872244958797"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"9.29999999999998", ",", 
+      RowBox[{"-", "0.1198608278083601"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"9.39999999999998", ",", 
+      RowBox[{"-", "0.0841070619288202"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"9.49999999999998", ",", 
+      RowBox[{"-", "0.03699821549112412"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"9.59999999999998", ",", "0.00843640692236941"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"9.69999999999998", ",", "0.06407207967884739"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"9.79999999999998", ",", "0.1131144789284449"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"9.89999999999998", ",", "0.1437273161559993"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"9.99999999999998", ",", "0.1693100456127073"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"10.09999999999998", ",", "0.1690519457129477"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"10.19999999999998", ",", "0.1554784689823294"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"10.29999999999998", ",", "0.145298338313565"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"10.39999999999998", ",", "0.1052267393895641"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"10.49999999999998", ",", "0.05579189231397569"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"10.59999999999998", ",", "0.01031247961751554"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"10.69999999999998", ",", 
+      RowBox[{"-", "0.02801390412396369"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"10.79999999999998", ",", 
+      RowBox[{"-", "0.06933763485107383"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"10.89999999999998", ",", 
+      RowBox[{"-", "0.1181953384967297"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"10.99999999999998", ",", 
+      RowBox[{"-", "0.1280089301531122"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"11.09999999999998", ",", 
+      RowBox[{"-", "0.1344700114316373"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"11.19999999999998", ",", 
+      RowBox[{"-", "0.1235032245982427"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"11.29999999999998", ",", 
+      RowBox[{"-", "0.0926741771159828"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"11.39999999999997", ",", 
+      RowBox[{"-", "0.07709303346283342"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"11.49999999999997", ",", 
+      RowBox[{"-", "0.03906275536648412"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"11.59999999999997", ",", "0.01076620322412379"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"11.69999999999997", ",", "0.05410447664896485"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"11.79999999999997", ",", "0.1014355687027829"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"11.89999999999997", ",", "0.1273947978391758"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"11.99999999999997", ",", "0.1560234191440921"}], "}"}]}], 
+   "}"}]}]], "Input",
+ AspectRatioFixed->
+  True,ExpressionUUID->"8fb975c8-6b95-4922-a17c-0a0a04660cd0"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+AutoGeneratedPackage->None,
+WindowToolbars->{"RulerBar", "EditBar"},
+CellGrouping->Automatic,
+WindowSize->{726, 791},
+WindowMargins->{{282, Automatic}, {Automatic, 90}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+ShowSelection->True,
+CellContext->Notebook,
+ShowCellLabel->False,
+ShowCellTags->False,
+FrontEndVersion->"12.2 for Mac OS X x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+PrivateNotebookOptions -> {"ColorPalette" -> {RGBColor, 128}},
+RenderingOptions -> {"ObjectDithering" -> True},
+RenderingOptions -> {"RasterDithering" -> False},
+CharacterEncoding -> "MacintoshAutomaticEncoding",
+ExpressionUUID->"d532d2a0-86b5-45c7-8455-807bc0056c91"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 228, 6, 98, "Title",ExpressionUUID->"de9a937d-8188-4da6-8d84-c3cb5644e2e9",
+ Evaluatable->False],
+Cell[810, 30, 344, 8, 32, "Input",ExpressionUUID->"50ad7ac3-c00c-483d-8850-d8682aedf8a2"],
+Cell[CellGroupData[{
+Cell[1179, 42, 148, 3, 54, "Subsection",ExpressionUUID->"5362a4a6-864a-4655-aaf6-6c10d162cbe2",
+ Evaluatable->False],
+Cell[1330, 47, 936, 21, 118, "Text",ExpressionUUID->"8402b42d-8194-4f8d-84cf-ae0f2635bf40",
+ Evaluatable->False],
+Cell[2269, 70, 479, 15, 42, "Text",ExpressionUUID->"dfc21ade-4cb1-402c-abc2-b748c8c27c6f",
+ Evaluatable->False],
+Cell[2751, 87, 155, 3, 33, "Text",ExpressionUUID->"208f0323-3a94-4d16-9a90-fad7dc313120",
+ Evaluatable->False],
+Cell[2909, 92, 513, 17, 42, "Text",ExpressionUUID->"bbbc727e-1519-47cf-94ef-d181e0b6dc0c",
+ Evaluatable->False],
+Cell[3425, 111, 138, 3, 33, "Text",ExpressionUUID->"de479635-1dae-4cf1-a0a2-6157c0bf0625",
+ Evaluatable->False],
+Cell[3566, 116, 328, 11, 48, "Text",ExpressionUUID->"7c4a28f9-33c3-4796-9e5b-a2bcab1d3d5e",
+ Evaluatable->False],
+Cell[3897, 129, 406, 8, 75, "Text",ExpressionUUID->"3f9f4e98-5b90-4457-870a-7144eeff9546",
+ Evaluatable->False],
+Cell[4306, 139, 368, 11, 30, "Input",ExpressionUUID->"e64c6a7d-84bf-4b26-88f8-6065b9fbb071"],
+Cell[4677, 152, 174, 3, 33, "Text",ExpressionUUID->"85d014f3-5832-4de4-b6ea-f9afc845165a",
+ Evaluatable->False],
+Cell[4854, 157, 412, 12, 30, "Input",ExpressionUUID->"410ba4a4-5641-49f6-9ce5-33de19f0ca0f"],
+Cell[5269, 171, 407, 14, 54, "Text",ExpressionUUID->"3f6795fa-7d70-450b-a385-aa207ff2db8e",
+ Evaluatable->False],
+Cell[5679, 187, 133, 3, 30, "Input",ExpressionUUID->"079d65e3-bb1b-463a-b716-5fedfe9c8017"],
+Cell[5815, 192, 168, 3, 33, "Text",ExpressionUUID->"c6ff2066-b175-42a4-9157-daff32b86a3f",
+ Evaluatable->False],
+Cell[5986, 197, 237, 6, 30, "Input",ExpressionUUID->"0e147bca-c080-4424-b818-af0960dd6fc7"],
+Cell[6226, 205, 541, 13, 76, "Text",ExpressionUUID->"91d63622-33bd-45f4-8889-69a7cc69a0de",
+ Evaluatable->False],
+Cell[6770, 220, 157, 3, 30, "Input",ExpressionUUID->"e363a1d9-7acb-4dd2-b860-b0a28ab137b8"],
+Cell[6930, 225, 214, 5, 33, "Text",ExpressionUUID->"12036b56-c580-437c-b92c-d3f7529ebd82",
+ Evaluatable->False],
+Cell[7147, 232, 263, 7, 30, "Input",ExpressionUUID->"7093d53f-cd91-470d-98fe-f9cf29aac9c4"],
+Cell[7413, 241, 170, 3, 33, "Text",ExpressionUUID->"c30f3294-e43e-4e80-b659-d392383c1a20",
+ Evaluatable->False],
+Cell[7586, 246, 157, 3, 30, "Input",ExpressionUUID->"6e09debb-0e7c-48a9-93b2-d948f80360a1"],
+Cell[7746, 251, 232, 6, 33, "Text",ExpressionUUID->"0213c2f8-bb1c-46aa-a186-8c0d21a96ea5",
+ Evaluatable->False],
+Cell[7981, 259, 360, 10, 52, "Input",ExpressionUUID->"b2a14988-aa24-4829-a0eb-4803c2744a7e"],
+Cell[8344, 271, 260, 6, 54, "Text",ExpressionUUID->"27ca0e10-f89a-460d-8578-d3ba7b7d944a",
+ Evaluatable->False],
+Cell[8607, 279, 412, 12, 30, "Input",ExpressionUUID->"027f6b5b-ad01-42ba-9b50-48aa1055334a"],
+Cell[9022, 293, 167, 3, 30, "Input",ExpressionUUID->"0ec2e392-8bb7-4e99-bdc4-0f533fabf454"],
+Cell[9192, 298, 416, 11, 55, "Text",ExpressionUUID->"d8bc3837-94a4-4d0b-8a54-e2f55a2eb1ec",
+ Evaluatable->False],
+Cell[9611, 311, 158, 3, 30, "Input",ExpressionUUID->"697aaf74-0a17-4735-accf-b411a5f6eb6c"],
+Cell[9772, 316, 346, 9, 73, "Input",ExpressionUUID->"30b42934-9362-4096-aca5-16fd670a39d9"],
+Cell[10121, 327, 137, 3, 33, "Text",ExpressionUUID->"8c1db92a-fd04-4ec2-b610-c94b576d06a8",
+ Evaluatable->False],
+Cell[10261, 332, 207, 5, 49, "Input",ExpressionUUID->"e93df5f9-9e24-43be-b3f1-0059c1e9ce3f"],
+Cell[10471, 339, 342, 7, 54, "Text",ExpressionUUID->"e5eef470-ed83-4530-8c48-f18995b2a32f",
+ Evaluatable->False],
+Cell[10816, 348, 289, 7, 30, "Input",ExpressionUUID->"3ca16987-8281-4109-9772-b75dbbd4498a"],
+Cell[CellGroupData[{
+Cell[11130, 359, 174, 3, 45, "Subsubsection",ExpressionUUID->"75754224-273a-4d79-a1a0-8a4f581f1077",
+ Evaluatable->False],
+Cell[11307, 364, 340, 7, 54, "Text",ExpressionUUID->"143fca96-f9c3-47b8-8f8a-bc3cc75161b1",
+ Evaluatable->False],
+Cell[11650, 373, 293, 8, 47, "Input",ExpressionUUID->"4b8eebdc-4671-4636-9328-8d49bb5b9bb9"],
+Cell[11946, 383, 159, 3, 33, "Text",ExpressionUUID->"39b70035-4db5-45ba-ab43-c2af0d474c87",
+ Evaluatable->False],
+Cell[12108, 388, 292, 8, 47, "Input",ExpressionUUID->"0d372c41-c6c2-4ffd-b571-4b51c06440c8"],
+Cell[12403, 398, 151, 3, 33, "Text",ExpressionUUID->"ed80ba75-1d84-4ab8-a74a-6d90af8b49ee",
+ Evaluatable->False],
+Cell[12557, 403, 269, 7, 30, "Input",ExpressionUUID->"fa90a64b-9946-420c-af9d-8d032ed6d49e"],
+Cell[12829, 412, 345, 12, 35, "Text",ExpressionUUID->"303c155b-a320-42bc-ad8e-e7e8dfff3b20",
+ Evaluatable->False],
+Cell[13177, 426, 312, 8, 57, "Input",ExpressionUUID->"206f4bc2-2ea5-4031-a417-4bdbd0e33fa7"],
+Cell[13492, 436, 791, 16, 140, "Text",ExpressionUUID->"49d083a4-1351-4911-93a2-e1bd4dbfc460",
+ Evaluatable->False],
+Cell[14286, 454, 451, 12, 57, "Input",ExpressionUUID->"d56d2a83-f297-4b49-9a36-7cba9c4848fe"],
+Cell[14740, 468, 1243, 33, 94, "Input",ExpressionUUID->"5cfe6ca1-59ae-4f68-ad16-5b1a5ebf41b0"],
+Cell[15986, 503, 367, 10, 54, "Text",ExpressionUUID->"8444fd9f-3d18-435c-933c-190ad0717331",
+ Evaluatable->False],
+Cell[16356, 515, 690, 20, 96, "Text",ExpressionUUID->"693daeb2-3740-4e6c-bfe4-b6a4a3a8d7c4",
+ Evaluatable->False],
+Cell[17049, 537, 135, 3, 30, "Input",ExpressionUUID->"e519f1fa-c11d-40f3-b83b-01a335dd7e34"],
+Cell[17187, 542, 835, 28, 96, "Text",ExpressionUUID->"3dd3b486-0a88-4cf7-aed1-34ceab9a07f5",
+ Evaluatable->False],
+Cell[18025, 572, 897, 25, 124, "Input",ExpressionUUID->"f9683ac4-ab40-46ce-9eb2-e77b209e1da4"],
+Cell[18925, 599, 192, 4, 30, "Input",ExpressionUUID->"15815a89-8207-42f3-b702-3e2366a31555"],
+Cell[19120, 605, 360, 6, 54, "Text",ExpressionUUID->"7306f934-7f77-4e89-8565-508af89f69f0",
+ Evaluatable->False],
+Cell[19483, 613, 102, 1, 30, "Input",ExpressionUUID->"70e4b920-b963-4e53-b3ed-a8fb1286e778"],
+Cell[19588, 616, 696, 21, 69, "Input",ExpressionUUID->"7413a085-efcf-4b85-a8ce-569af68ca707"],
+Cell[20287, 639, 280, 6, 30, "Input",ExpressionUUID->"03085151-108b-4cac-81bd-ec471f031547"],
+Cell[20570, 647, 183, 3, 33, "Text",ExpressionUUID->"27bf3d91-0aef-49aa-af30-e780072e3fe3",
+ Evaluatable->False],
+Cell[20756, 652, 782, 23, 96, "Input",ExpressionUUID->"931b2731-bf2a-4e99-8b82-167eb2eb9ba8"],
+Cell[21541, 677, 378, 9, 44, "Input",ExpressionUUID->"41074fff-60d1-401f-b152-bdf1f3a4a009"],
+Cell[21922, 688, 208, 4, 33, "Text",ExpressionUUID->"5df964f4-e861-4fc4-9544-f3f72046f96e",
+ Evaluatable->False],
+Cell[22133, 694, 636, 19, 77, "Input",ExpressionUUID->"014e55b2-23cd-4d41-8be8-23e10f96fc69"],
+Cell[22772, 715, 391, 9, 44, "Input",ExpressionUUID->"4445f349-b5e4-437c-9dc3-bfe0f708130f"],
+Cell[23166, 726, 154, 3, 33, "Text",ExpressionUUID->"be34eeeb-2ad7-4ea3-8fc1-73454e1a19c0",
+ Evaluatable->False],
+Cell[23323, 731, 612, 14, 105, "Input",ExpressionUUID->"cc80096e-3733-4b89-a854-1c8fbb1dafe0"],
+Cell[23938, 747, 431, 8, 75, "Text",ExpressionUUID->"4f988b06-0515-47fe-a743-fc10d515b2a6",
+ Evaluatable->False],
+Cell[24372, 757, 1376, 39, 136, "Input",ExpressionUUID->"4ad025a4-8030-49a1-af04-fb6b36f13e58"],
+Cell[25751, 798, 616, 16, 96, "Text",ExpressionUUID->"520a6069-a72c-40a9-8d2d-0188067d4701",
+ Evaluatable->False],
+Cell[26370, 816, 633, 18, 52, "Input",ExpressionUUID->"d64b538f-8243-4e76-bd24-22143722eb8b"],
+Cell[27006, 836, 167, 3, 33, "Text",ExpressionUUID->"b1533da6-ec91-47b9-bf9c-f5161a38ad51",
+ Evaluatable->False],
+Cell[27176, 841, 740, 17, 105, "Input",ExpressionUUID->"fe7c0d28-4213-49b4-bf48-cae1d44bc696"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27953, 863, 146, 3, 45, "Subsubsection",ExpressionUUID->"f58181a4-15a2-40a3-921e-3f5cb92ff6a2",
+ Evaluatable->False],
+Cell[28102, 868, 814, 13, 159, "Text",ExpressionUUID->"cd20e135-133f-4ac5-8daf-5ba8f7ed5d68",
+ Evaluatable->False],
+Cell[28919, 883, 1110, 30, 73, "Input",ExpressionUUID->"9cab9ef1-22ee-4f3c-9b66-e178b6e04397"],
+Cell[30032, 915, 328, 11, 33, "Text",ExpressionUUID->"a961475a-d170-4af1-9bd9-0b3d88c9fe05",
+ Evaluatable->False],
+Cell[30363, 928, 140, 3, 30, "Input",ExpressionUUID->"f29883b7-07fc-4c3d-aab0-a0a854e6ee4f"],
+Cell[30506, 933, 168, 3, 33, "Text",ExpressionUUID->"4f95177a-0ed7-47c1-b0a6-3ae7f0f45c19",
+ Evaluatable->False],
+Cell[30677, 938, 689, 18, 52, "Input",ExpressionUUID->"ef273fcd-1f47-4078-bad3-7ab5cc905956"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31415, 962, 148, 3, 54, "Subsection",ExpressionUUID->"bf59fc0c-bda4-41f0-926c-0b8d3ac9894a",
+ Evaluatable->False],
+Cell[31566, 967, 532, 10, 96, "Text",ExpressionUUID->"18bb12f5-a822-4058-87d3-17689cf6fd67",
+ Evaluatable->False],
+Cell[32101, 979, 624, 19, 42, "Text",ExpressionUUID->"800eed5a-559a-4b1f-9558-9dca604a598e",
+ Evaluatable->False],
+Cell[32728, 1000, 366, 9, 54, "Text",ExpressionUUID->"9e22c502-44ac-4e41-97a3-7b8bd66c78ec",
+ Evaluatable->False],
+Cell[33097, 1011, 759, 21, 52, "Input",ExpressionUUID->"2dc225b1-19df-4840-b219-a56d2ec8a58a"],
+Cell[33859, 1034, 210, 5, 33, "Text",ExpressionUUID->"8c31bbc9-f32c-4d45-86ee-daed97bcc6f2",
+ Evaluatable->False],
+Cell[34072, 1041, 508, 14, 34, "Text",ExpressionUUID->"8e5caf91-7522-4bce-a875-68042602e3ea",
+ Evaluatable->False],
+Cell[34583, 1057, 419, 10, 75, "Text",ExpressionUUID->"5ecb9b16-1aba-49a4-b072-f0b4680fefcf",
+ Evaluatable->False],
+Cell[35005, 1069, 366, 10, 30, "Input",ExpressionUUID->"b062917f-c44a-43a1-8434-c4a9d6242a07"],
+Cell[35374, 1081, 206, 5, 33, "Text",ExpressionUUID->"8dcec8ef-2458-4b3a-90ff-6d96e7e6e700",
+ Evaluatable->False],
+Cell[35583, 1088, 144, 2, 30, "Input",ExpressionUUID->"b69c2c75-7a57-45ec-a4d9-d4c8ef37b9bb"],
+Cell[35730, 1092, 336, 9, 54, "Text",ExpressionUUID->"ed7a06b7-799f-4ffc-8179-58d854c4bc9b",
+ Evaluatable->False],
+Cell[36069, 1103, 358, 9, 33, "Input",ExpressionUUID->"b41358c8-ffce-403d-ba99-175ad0d35832"],
+Cell[36430, 1114, 307, 7, 54, "Text",ExpressionUUID->"cf5dc2c7-7afe-4bfb-9e08-f717de330177",
+ Evaluatable->False],
+Cell[36740, 1123, 213, 4, 30, "Input",ExpressionUUID->"8b8e1b75-4f94-4173-9167-fc460cf59caf"],
+Cell[36956, 1129, 206, 5, 33, "Text",ExpressionUUID->"99e0a3c5-9c5f-42a5-ae5b-0663e1439333",
+ Evaluatable->False],
+Cell[37165, 1136, 560, 17, 30, "Input",ExpressionUUID->"88a14c5b-14c8-43f6-9982-ad63458fea84"],
+Cell[37728, 1155, 409, 8, 75, "Text",ExpressionUUID->"88dc3fa6-10a7-4edb-9500-98ad6b6e8cd7",
+ Evaluatable->False],
+Cell[38140, 1165, 265, 6, 30, "Input",ExpressionUUID->"3263efdf-fb05-4e77-a578-288e66f2fab4"],
+Cell[38408, 1173, 170, 3, 33, "Text",ExpressionUUID->"70c6a504-3f2a-4b8f-863b-00f5f29fd3d0",
+ Evaluatable->False],
+Cell[38581, 1178, 393, 10, 30, "Input",ExpressionUUID->"54f83e16-8933-4a84-a70d-739fbd96a3bd"],
+Cell[38977, 1190, 299, 7, 54, "Text",ExpressionUUID->"672ea22d-963d-4da5-9f16-19bf57cf1b3c",
+ Evaluatable->False],
+Cell[39279, 1199, 449, 12, 30, "Input",ExpressionUUID->"fa231623-dbe8-438b-91ff-50de116c1d8a"],
+Cell[39731, 1213, 271, 6, 54, "Text",ExpressionUUID->"53a7b1dc-15cd-43be-921e-91cf22e56fe7",
+ Evaluatable->False],
+Cell[40005, 1221, 206, 4, 30, "Input",ExpressionUUID->"13e5bcb2-1428-4cdf-9f84-45aa35542874"],
+Cell[40214, 1227, 74, 0, 35, "Text",ExpressionUUID->"3c573ea6-6107-48b8-953b-6cf279ac0159"],
+Cell[40291, 1229, 283, 7, 30, "Input",ExpressionUUID->"338ff308-8f98-4bb4-bfa4-1d4b300d4016"],
+Cell[40577, 1238, 292, 6, 54, "Text",ExpressionUUID->"db9a853c-2b9d-4ba8-97b8-ec829cc2d301",
+ Evaluatable->False],
+Cell[40872, 1246, 158, 3, 30, "Input",ExpressionUUID->"6f88ea40-abbd-4068-abe6-0062375d393a"],
+Cell[41033, 1251, 435, 11, 54, "Text",ExpressionUUID->"5dcae00c-3156-40da-82c8-2d89394186df",
+ Evaluatable->False],
+Cell[41471, 1264, 158, 3, 30, "Input",ExpressionUUID->"e00fe894-672b-4525-860d-9693f941992b"],
+Cell[41632, 1269, 208, 5, 33, "Text",ExpressionUUID->"c4e93890-9507-4d27-81ba-103255439284",
+ Evaluatable->False],
+Cell[41843, 1276, 137, 2, 30, "Input",ExpressionUUID->"e9a45100-4e5f-4694-bd09-48f89ed6886f"],
+Cell[41983, 1280, 307, 8, 30, "Input",ExpressionUUID->"c598d448-de3f-4a29-b106-b94b3c5f398c"],
+Cell[42293, 1290, 159, 3, 33, "Text",ExpressionUUID->"f5fa0637-e10f-43f7-8fa1-9d0b44990c35",
+ Evaluatable->False],
+Cell[42455, 1295, 158, 3, 30, "Input",ExpressionUUID->"07e47179-d12e-4616-b141-6bc14fbafb6a"],
+Cell[42616, 1300, 195, 3, 33, "Text",ExpressionUUID->"e0527bcb-3122-4f38-98f6-fd317ef5c5bc",
+ Evaluatable->False],
+Cell[42814, 1305, 211, 5, 49, "Input",ExpressionUUID->"872a33e9-e55e-4bab-b066-b2d0b20051bc"],
+Cell[43028, 1312, 245, 6, 30, "Input",ExpressionUUID->"b9e1bb0b-dc48-4ed1-a9d1-06aacdf166e4"],
+Cell[43276, 1320, 194, 3, 33, "Text",ExpressionUUID->"051da3a2-9bd8-4615-8a88-be0ba543e095",
+ Evaluatable->False],
+Cell[43473, 1325, 285, 7, 30, "Input",ExpressionUUID->"6b98cb8b-22f0-47c5-b47c-3d7378c04b1d"],
+Cell[43761, 1334, 453, 10, 54, "Text",ExpressionUUID->"898215c1-d2c0-468b-b1ea-1b641ae34e33",
+ Evaluatable->False],
+Cell[44217, 1346, 242, 5, 30, "Input",ExpressionUUID->"1f0d4352-4a9f-43a5-950c-87336a97f354"],
+Cell[44462, 1353, 161, 3, 33, "Text",ExpressionUUID->"9edea3be-b78e-4be7-a378-dc152422f239",
+ Evaluatable->False],
+Cell[44626, 1358, 200, 4, 30, "Input",ExpressionUUID->"810bc0d6-a202-413b-b129-a66cb9831a94"],
+Cell[44829, 1364, 1262, 39, 204, "Text",ExpressionUUID->"a61d12ba-8b55-4242-a3f3-2faed73f3a03",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[46116, 1407, 141, 3, 45, "Subsubsection",ExpressionUUID->"756b0250-1a61-48f2-a4ac-51f1e660905f",
+ Evaluatable->False],
+Cell[46260, 1412, 185, 3, 33, "Text",ExpressionUUID->"6e6bf170-0b2a-4121-8a13-cf0c1ef4449a",
+ Evaluatable->False],
+Cell[46448, 1417, 505, 13, 57, "Input",ExpressionUUID->"fe5990ec-26a9-4c49-8868-6817403de186"],
+Cell[46956, 1432, 236, 6, 33, "Text",ExpressionUUID->"d2c1c881-3a55-429b-853f-07e71d52ee1a",
+ Evaluatable->False],
+Cell[47195, 1440, 227, 5, 30, "Input",ExpressionUUID->"0fa82a26-b221-42e4-9af5-05f51618367c"],
+Cell[47425, 1447, 305, 6, 30, "Input",ExpressionUUID->"c5b31ff3-c242-47df-80a8-d17c22fdd37a"],
+Cell[47733, 1455, 853, 24, 58, "Text",ExpressionUUID->"3a358656-cb65-4db0-a5b6-adc334a536dc"],
+Cell[48589, 1481, 785, 20, 52, "Input",ExpressionUUID->"f76eba57-00f3-454a-80d0-25eae0407ba0"],
+Cell[49377, 1503, 246, 6, 33, "Text",ExpressionUUID->"267d1dca-857d-4e04-8840-4c5335c3d2f6",
+ Evaluatable->False],
+Cell[49626, 1511, 1383, 37, 100, "Input",ExpressionUUID->"4c17fc74-73b4-48d2-9169-5b78a4df5670"],
+Cell[51012, 1550, 517, 9, 96, "Text",ExpressionUUID->"2465cbd5-11e6-4a7c-bc0f-9df5a358c0b6",
+ Evaluatable->False],
+Cell[51532, 1561, 1133, 29, 73, "Input",ExpressionUUID->"e1ade5d3-adc6-4c0f-ab75-3e4877eeb649"],
+Cell[52668, 1592, 273, 4, 54, "Text",ExpressionUUID->"01a70049-170d-4eec-a531-c44afa8f18dc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52978, 1601, 145, 3, 45, "Subsubsection",ExpressionUUID->"2f8f3cd2-3de3-4131-9898-95cabb888897",
+ Evaluatable->False],
+Cell[53126, 1606, 617, 16, 61, "Text",ExpressionUUID->"0988f79b-b930-4f73-8bde-ca01acd21e87",
+ Evaluatable->False],
+Cell[53746, 1624, 152, 3, 30, "Input",ExpressionUUID->"89948db1-37a7-4a93-8526-633038bdfda5"],
+Cell[53901, 1629, 579, 14, 30, "Input",ExpressionUUID->"a057e7bf-b377-43e7-9237-747035dd5430"],
+Cell[54483, 1645, 1122, 32, 58, "Text",ExpressionUUID->"bc4ab15e-9adb-41aa-9a9a-21ce2a58b788"],
+Cell[55608, 1679, 327, 9, 30, "Input",ExpressionUUID->"9537c4b6-68c4-4520-887d-b56a93d5ceef"],
+Cell[55938, 1690, 267, 5, 30, "Input",ExpressionUUID->"970dd47c-20a2-4852-9c3d-2e2a85ce063c"],
+Cell[56208, 1697, 175, 3, 35, "Text",ExpressionUUID->"916f7716-8ea3-42b2-8621-266782a8a646"],
+Cell[56386, 1702, 331, 8, 30, "Input",ExpressionUUID->"6f90bd5a-0fe0-49e5-8036-f532de3711fd"],
+Cell[56720, 1712, 144, 3, 35, "Text",ExpressionUUID->"fc6cd5f3-d871-45a7-b0e9-2989f22d7519"],
+Cell[56867, 1717, 504, 13, 52, "Input",ExpressionUUID->"614c89e6-d10c-4eae-a67a-3a5fef8471c4"],
+Cell[57374, 1732, 147, 3, 35, "Text",ExpressionUUID->"f3111c64-177e-4281-bffc-304cfd76a303"],
+Cell[57524, 1737, 504, 13, 52, "Input",ExpressionUUID->"e5ce3f33-b7c5-43c2-92d1-b9fa114d9b7d"],
+Cell[58031, 1752, 204, 5, 33, "Text",ExpressionUUID->"8d880c9e-5f47-411c-84d5-65f91ca0ca21",
+ Evaluatable->False],
+Cell[58238, 1759, 386, 10, 38, "Input",ExpressionUUID->"0f7058a6-3906-457f-ba71-b083fbf625b4"],
+Cell[58627, 1771, 212, 4, 30, "Input",ExpressionUUID->"389073af-02eb-4d43-b691-b9c490fb28a0"],
+Cell[58842, 1777, 242, 6, 33, "Text",ExpressionUUID->"e8941f9b-a95c-4dfe-b671-c5d41b6973c3",
+ Evaluatable->False],
+Cell[59087, 1785, 592, 14, 52, "Input",ExpressionUUID->"51621604-2ba7-454b-b252-e8bb2f93ced6"],
+Cell[59682, 1801, 370, 10, 34, "Text",ExpressionUUID->"e85963b8-e727-4944-85df-8a584998d753",
+ Evaluatable->False],
+Cell[60055, 1813, 592, 14, 52, "Input",ExpressionUUID->"7f1f6e7a-bb0f-4468-98d1-f6c8d394f989"],
+Cell[60650, 1829, 248, 6, 33, "Text",ExpressionUUID->"533711dc-07a9-423f-b2d4-04b722aed3b1",
+ Evaluatable->False],
+Cell[60901, 1837, 1018, 24, 94, "Input",ExpressionUUID->"875a888e-1069-4236-a4f8-c7f1a18c5f82"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[61956, 1866, 140, 3, 45, "Subsubsection",ExpressionUUID->"7d405533-4a60-4c04-a372-83fcbd9496f7",
+ Evaluatable->False],
+Cell[62099, 1871, 262, 6, 54, "Text",ExpressionUUID->"a2721f52-f2a2-429f-8c65-d5b04acd63b0",
+ Evaluatable->False],
+Cell[62364, 1879, 533, 14, 57, "Input",ExpressionUUID->"809c08c4-a0c1-47e3-9073-64f53819a4ae"],
+Cell[62900, 1895, 510, 11, 75, "Text",ExpressionUUID->"022eb5f0-73af-4fe2-b60b-6d43ce780f81",
+ Evaluatable->False],
+Cell[63413, 1908, 680, 18, 52, "Input",ExpressionUUID->"e424eb5c-a730-4f86-a0aa-4d07bebb8e61"],
+Cell[64096, 1928, 764, 20, 52, "Input",ExpressionUUID->"5fd08af2-c7ed-4315-9350-d014f329a2ec"],
+Cell[64863, 1950, 1076, 29, 73, "Input",ExpressionUUID->"b151a72c-d1c0-421b-92f7-1fb6762e5c8a"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[65988, 1985, 132, 3, 67, "Section",ExpressionUUID->"569e70f3-a99f-46b2-bde2-b35e4bffdec1",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[66145, 1992, 149, 3, 46, "Subsection",ExpressionUUID->"98a22333-b5df-4ac5-b216-5e15f8790f87",
+ Evaluatable->False],
+Cell[66297, 1997, 493, 9, 96, "Text",ExpressionUUID->"c8a8b237-984b-4d68-84ad-9ca31a32f953",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[66815, 2010, 92, 0, 45, "Subsubsection",ExpressionUUID->"d526ce92-cf35-4ef0-8592-59a6bee1bee5"],
+Cell[66910, 2012, 7449, 206, 850, "Input",ExpressionUUID->"b3400e5a-0115-4818-b2db-f12521efc3a2"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[74408, 2224, 88, 0, 54, "Subsection",ExpressionUUID->"0c8bfe84-fce3-447d-89ef-c06030c43105"],
+Cell[74499, 2226, 569, 10, 117, "Text",ExpressionUUID->"12854818-9235-429c-93f3-bd0a9ff2f910",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[75093, 2240, 92, 0, 45, "Subsubsection",ExpressionUUID->"c7d45355-379d-4f2a-8a72-72fae71a98a8"],
+Cell[75188, 2242, 12443, 305, 2278, "Input",ExpressionUUID->"8fb975c8-6b95-4922-a17c-0a0a04660cd0"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
