@@ -1,0 +1,635 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     27071,        627]
+NotebookOptionsPosition[     22229,        546]
+NotebookOutlinePosition[     22572,        561]
+CellTagsIndexPosition[     22529,        558]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Error Analysis Notebook", "Title",
+ CellChangeTimes->{{3.852032265784422*^9, 
+  3.852032273925031*^9}},ExpressionUUID->"8c930cec-80f3-40bb-a914-\
+c4f0f55f1e2f"],
+
+Cell[CellGroupData[{
+
+Cell["Mean & Standard Deviation", "Section",
+ CellChangeTimes->{{3.8520322860293465`*^9, 
+  3.852032320174159*^9}},ExpressionUUID->"348a02c7-af02-45ca-9db7-\
+707e4765b776"],
+
+Cell["\<\
+In this section, we will investigate two pairs of data sets pair A/B and pair \
+C/D. You are asked to find the mean and standard deviation for each set then \
+answer some questions about them.  Insert you answers in the appropriate \
+place such that you can check and compare them. \
+\>", "Text",
+ CellChangeTimes->{{3.852032355436984*^9, 3.852032435777913*^9}, {
+  3.852119797276821*^9, 
+  3.852119829653659*^9}},ExpressionUUID->"78b3f7a4-26f6-45a0-b3ce-\
+b22adbebcd44"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Data Set A", "Subtitle",
+ CellChangeTimes->{{3.852032334215283*^9, 
+  3.852032342717035*^9}},ExpressionUUID->"47a7f260-6fc0-49e1-a28b-\
+b6df469c9233"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dataA", "=", 
+   RowBox[{"{", 
+    RowBox[{"1.3467036789429163", ",", 
+     RowBox[{"-", "1.2084418940618096"}], ",", 
+     RowBox[{"-", "0.486131071405868"}], ",", 
+     RowBox[{"-", "0.8778228233430941"}], ",", 
+     RowBox[{"-", "0.8722441095333068"}]}], "}"}]}], ";"}]], "Input",Expressio\
+nUUID->"1be68ca5-bb09-4267-8c4b-7e1007ea0723"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Data Set B", "Subtitle",
+ CellChangeTimes->{{3.8520324604494715`*^9, 
+  3.8520324646191416`*^9}},ExpressionUUID->"96c55f6f-bd45-42e0-a4b6-\
+95d7daebd5c6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dataB", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.6911179337346142", ",", "0.1563944601164254", ",", 
+     "2.0817119999041758", ",", "0.47730919868282323", ",", 
+     RowBox[{"-", "0.6761734808494888"}]}], "}"}]}], ";"}]], "Input",Expressio\
+nUUID->"1bbeee26-4eca-46e8-a619-2d15946ff04f"],
+
+Cell[TextData[{
+ StyleBox["These two data sets came from the same underlying distribution. \
+Notice that the means are very different. This is why uncertainty is so \
+important. Suppose these were multiple measurements of the same physical \
+quantity. What could you do to give a more accurate reading?",
+  FontColor->RGBColor[1, 0, 0]],
+ "\n\n\n\n"
+}], "Text",
+ CellChangeTimes->{{3.8520324950213757`*^9, 3.852032642168948*^9}, {
+  3.8521266458814993`*^9, 
+  3.852126652665389*^9}},ExpressionUUID->"8d8b8194-5352-4839-a40f-\
+1eb4e1736f33"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Data Set C", "Subtitle",
+ CellChangeTimes->{{3.8520326930930386`*^9, 
+  3.8520326955619416`*^9}},ExpressionUUID->"99bb1a2c-08f5-4aae-bd90-\
+7db2f4d56cd1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dataC", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.46575259550166315"}], ",", 
+     RowBox[{"-", "1.2206927302906392"}], ",", "0.20757572895950988", ",", 
+     "1.4483839204392175", ",", 
+     RowBox[{"-", "1.4272676176597188"}], ",", 
+     RowBox[{"-", "0.3499240223135879"}], ",", "0.7781311285357986", ",", 
+     "1.698199030988922", ",", "0.009392356910561079", ",", 
+     RowBox[{"-", "1.4728271483080482"}], ",", "0.11175140412962258", ",", 
+     "1.7675379390589032", ",", 
+     RowBox[{"-", "0.9161765043308878"}], ",", "1.3435102766307268", ",", 
+     "0.7560951652690419", ",", 
+     RowBox[{"-", "0.45423449968792734"}], ",", 
+     RowBox[{"-", "1.8327584073586878"}], ",", "0.9130409075238859", ",", 
+     "1.1649781641466805", ",", "0.20984705630700315", ",", 
+     "1.7853463878932387", ",", "1.1889383311498558", ",", 
+     RowBox[{"-", "1.4296773811153731"}], ",", "0.17149832875446155", ",", 
+     "1.2676245727374214"}], "}"}]}], ";"}]], "Input",ExpressionUUID->\
+"357dedd5-f53e-4e35-b009-2a1eca971cf1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Data Set D", "Subtitle",
+ CellChangeTimes->{{3.8520327186430583`*^9, 
+  3.8520327237228184`*^9}},ExpressionUUID->"629802cc-ff21-44e9-9a54-\
+5a0ac7052826"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dataD", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.1057235241613592"}], ",", "0.5625982069080532", ",", 
+     "0.66983799854698", ",", 
+     RowBox[{"-", "0.6056090313272898"}], ",", 
+     RowBox[{"-", "0.6299433406806142"}], ",", "0.9806372523139355", ",", 
+     RowBox[{"-", "0.023172962048097257"}], ",", 
+     RowBox[{"-", "1.8168998538137853"}], ",", 
+     RowBox[{"-", "0.24498180933534103"}], ",", "1.132732364886653", ",", 
+     "0.13417345985700707", ",", 
+     RowBox[{"-", "0.6349010351945944"}], ",", "0.9203073002870821", ",", 
+     "1.3935663273989458", ",", 
+     RowBox[{"-", "0.21173182271084348"}], ",", "1.2165168754730553", ",", 
+     RowBox[{"-", "0.24058570119903266"}], ",", 
+     RowBox[{"-", "0.1308478657586464"}], ",", "1.242978248049005", ",", 
+     "0.6883738079041519", ",", 
+     RowBox[{"-", "1.747564038296225"}], ",", "0.025076850790756337", ",", 
+     "0.33783621436983763", ",", 
+     RowBox[{"-", "2.5191239004170853"}], ",", "0.9925756675895148"}], 
+    "}"}]}], ";"}]], "Input",ExpressionUUID->"eef50f91-f22e-4830-a69e-\
+84465c424581"],
+
+Cell[TextData[StyleBox["Now that you have seen both pairs of data sets, what \
+can you elaborate about them?",
+ FontColor->RGBColor[1, 0, 0]]], "Text",
+ CellChangeTimes->{
+  3.852126672679839*^9},ExpressionUUID->"53fba896-e1d7-4020-9837-\
+a08df6c4733f"],
+
+Cell[CellGroupData[{
+
+Cell["Histograms", "Section",
+ CellChangeTimes->{{3.852032754927156*^9, 
+  3.8520327593338966`*^9}},ExpressionUUID->"64ae9faa-e62b-4b0a-aa5a-\
+ce23476e6389"],
+
+Cell["\<\
+Histograms can be a useful way to visualize data. Use Mathematica to create \
+histograms for  Datasets A and C with an appropriate choice of binning.\
+\>", "Text",
+ CellChangeTimes->{{3.852032769593422*^9, 3.852032785006462*^9}, {
+  3.852119841109002*^9, 
+  3.8521198632043266`*^9}},ExpressionUUID->"1b6bd1c7-66ff-491f-af38-\
+9dc1e6d59e12"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Distributions ", "Section",
+ CellChangeTimes->{{3.852032807543934*^9, 
+  3.8520328110348806`*^9}},ExpressionUUID->"98775343-fb4c-4840-ba62-\
+b08aa9a0fdef"],
+
+Cell["\<\
+This section the goal is to get comfortable with some common probability \
+distributions: Binomial and Normal (Gaussian) Distribution.  In this section, \
+answer the following questions:\
+\>", "Text",
+ CellChangeTimes->{{3.852033004141537*^9, 3.8520330716196594`*^9}, {
+   3.852125050993532*^9, 3.85212505327066*^9}, {3.8521250994921193`*^9, 
+   3.852125226840852*^9}, {3.85212529633154*^9, 3.85212531432728*^9}, 
+   3.8521266937792587`*^9},ExpressionUUID->"2af04f60-f0e7-4b8b-be49-\
+929aee20887a"],
+
+Cell[CellGroupData[{
+
+Cell["Binomial Distribution ", "Subsection",
+ CellChangeTimes->{{3.852033004141537*^9, 3.8520330716196594`*^9}, {
+  3.852125050993532*^9, 3.85212505327066*^9}, {3.8521250994921193`*^9, 
+  3.852125226840852*^9}, {3.85212529633154*^9, 3.85212531432728*^9}, {
+  3.8521266968420763`*^9, 
+  3.852126720020629*^9}},ExpressionUUID->"ac3cfc08-617d-483a-a8db-\
+2f2d94dffda9"],
+
+Cell["\<\
+Imagine flipping a normal coin 10 times.
+\t1) Calculate possibilities of getting all 10 heads . 
+\t2) Calculate probability has first 5 heads, and 5 tails. 
+\t3) Calculate of getting 5 head v 5 tails in any order. 
+\t4) Calculate 3 heads v 7 tails.
+Roll a dice, only getting a 6 succeed and fail otherwise. 
+\t1)If roll 3 times, what are your chances of success on all 3 rolls? 
+\t2)If roll 3 times, what are your chances of success on at least one 6?\
+\>", "Text",
+ CellChangeTimes->{{3.852033004141537*^9, 3.8520330716196594`*^9}, {
+  3.852125050993532*^9, 3.85212505327066*^9}, {3.8521250994921193`*^9, 
+  3.852125226840852*^9}, {3.85212529633154*^9, 3.85212531432728*^9}, {
+  3.852130892371319*^9, 
+  3.8521308949922843`*^9}},ExpressionUUID->"efb11758-2fe8-4b42-863f-\
+aadf3ae31b53"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Normal (Gaussian) Distribution", "Subsection",
+ CellChangeTimes->{{3.852126734134326*^9, 
+  3.85212674472143*^9}},ExpressionUUID->"c96a5918-4f55-4163-a0ea-\
+44061d789c6e"],
+
+Cell["\<\
+Consider the following how many of them lie between + or - 1? And how many \
+lie between + or - 2? Is this what you would expect for a Gaussian with a \
+mean of 0 and a standard deviation of 1?\
+\>", "Text",
+ CellChangeTimes->{{3.8521269159691224`*^9, 
+  3.8521270021754446`*^9}},ExpressionUUID->"5b0e7484-7272-4863-94ae-\
+189d9b2078d7"],
+
+Cell[BoxData[
+ RowBox[{"datasetE", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"-", "0.5240086503940309"}], ",", 
+    RowBox[{"-", "0.36172559225735357"}], ",", "0.7918581671673733", ",", 
+    RowBox[{"-", "0.21926534223399435"}], ",", "0.5850072766097515", ",", 
+    RowBox[{"-", "1.6128988432026619"}], ",", 
+    RowBox[{"-", "1.3087551686097936"}], ",", 
+    RowBox[{"-", "0.16738320640155063"}], ",", "1.6604468586205618", ",", 
+    "0.5337622093363519"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.85212701231059*^9, 
+  3.8521270361485496`*^9}},ExpressionUUID->"79e82ee2-c5a5-4dd9-a4e6-\
+d3c961cd9137"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Error Propagation", "Section",
+ CellChangeTimes->{{3.852032851774044*^9, 3.852032854312914*^9}, {
+  3.8520331675447*^9, 
+  3.852033168302391*^9}},ExpressionUUID->"dd9b1854-325b-458f-b7af-\
+0c4c1e7a3e5b"],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s imagine we want to measure the value of g from an \
+experiment where we drop a mass a distance of exactly 5m, and time how long \
+it takes to fall to ground. Let\[CloseCurlyQuote]s say we repeat this \
+experiment ten times and get ten time readings. We know how to determine g \
+from these values and we are interested in the \[OpenCurlyQuote]uncertainty\
+\[CloseCurlyQuote] on the value of g that we extract.
+
+Suppose we obtain the following ten data points from our time measurements:\
+\>", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, 
+   3.8520332616461167`*^9},ExpressionUUID->"6c9f2302-b1f2-4e0d-b156-\
+5d87f1948fbe"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dataF", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "1.2125671070726995", ",", "0.9344331739161295", ",", 
+     "1.0991611532382515", ",", "1.0477593665957385", ",", 
+     "1.0856669509630092", ",", "1.0448883950953853", ",", 
+     "1.1443184357096834", ",", "0.9189972268595914", ",", 
+     "1.011407263475101", ",", "0.9406521361473601"}], "}"}]}], 
+  ";"}]], "Input",ExpressionUUID->"1746cb0b-aa02-40b1-9918-e807d2fd4f48"],
+
+Cell["\<\
+If the object was dropped from rest and we ignore air resistance, we know \
+that g, the distance fallen y, and the time taken t, are related by: \
+\>", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, 3.852033319797943*^9, {
+   3.852033376306528*^9, 
+   3.8520333801162324`*^9}},ExpressionUUID->"9bacc679-609f-4da7-8760-\
+aeee7bed046d"],
+
+Cell[BoxData[
+ RowBox[{"                                                  ", 
+  RowBox[{"y", "=", 
+   RowBox[{
+    FractionBox["1", "2"], "g", "*", 
+    SuperscriptBox["t", "2"]}]}]}]], "DisplayFormula",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.852033325103691*^9, 
+   3.852033373367567*^9}},ExpressionUUID->"ea09e1ed-6f5f-483e-9fe9-\
+5cc9918d055f"],
+
+Cell["\<\
+Here y = 5m. (And we can treat this as exact here, and not worry about any \
+uncertainty on this distance, for the sake of this example)
+
+So from our dataset of time readings, we can calculate the mean time, and \
+from that value we should calculate our best estimate of the value of g.  Do \
+that now and quote your result.\
+\>", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, 
+   3.852033448666148*^9},ExpressionUUID->"c070c6e5-636e-4b65-848f-\
+a55fb0d16ab4"],
+
+Cell["", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, {3.8520334561632137`*^9, 3.8520334570907154`*^9}, {
+   3.852033589203763*^9, 3.8520336084000225`*^9}, 
+   3.852033687083791*^9},ExpressionUUID->"d94db281-e869-4892-a9e8-\
+4eca2c855b99"],
+
+Cell["\<\
+But there was clearly an uncertainty in our time measurement, because we \
+observed a range of values for time taken each time we repeated the \
+experiment. This then introduces some uncertainty in the value of g that we \
+extract. Another way to think about this is: if we repeated the experiment \
+again, we would probably get different values, which probably would have a \
+different mean, and hence would lead to a different extracted value of g. So, \
+we need to consider the effect of the uncertainty in time measurement on the \
+value we extract for g.
+
+As previously discussed, we can use the 'standard deviation' of the time \
+values as a good measure of the uncertainty in time, delta t.
+
+Calculate this quantity from your time data.\
+\>", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, {3.8520334561632137`*^9, 3.8520334570907154`*^9}, {
+   3.852033589203763*^9, 
+   3.8520336084000225`*^9}},ExpressionUUID->"670e12e3-a753-4bf4-ac1f-\
+f8f424645478"],
+
+Cell["", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, {3.8520334561632137`*^9, 3.8520334570907154`*^9}, {
+   3.852033589203763*^9, 
+   3.8520336768916674`*^9}},ExpressionUUID->"1b0014fd-91cb-4dba-b2c0-\
+5ebc2162f08c"],
+
+Cell["\<\
+Now, given that we know the formula to calculate g from t, use the theory of \
+error propagation to determine the formula for how the uncertainty on g, \
+delta g, is related to the time uncertainty delta t for this specific \
+situation.\
+\>", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, {3.8520334561632137`*^9, 3.8520334570907154`*^9}, {
+   3.852033589203763*^9, 
+   3.852033653688902*^9}},ExpressionUUID->"e0f84983-e96f-4a19-be04-\
+fce4392bf4b9"],
+
+Cell[BoxData[""], "DisplayFormula",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, {3.8520334561632137`*^9, 3.8520334570907154`*^9}, {
+   3.852033589203763*^9, 
+   3.8520336656341734`*^9}},ExpressionUUID->"ec24606b-9aff-4b9c-a93d-\
+999ebeee9e75"],
+
+Cell["\<\
+ Now, using the specific value of delta t that you previously calculated, \
+calculate the derived uncertainty on g.\
+\>", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, {3.8520334561632137`*^9, 3.8520334570907154`*^9}, {
+   3.852033589203763*^9, 3.8520336369029117`*^9}, {3.8520336692896357`*^9, 
+   3.8520336707779145`*^9}, 
+   3.8520337021052136`*^9},ExpressionUUID->"9d1f00c0-9ab3-4640-ad33-\
+15ca989ef276"],
+
+Cell["", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, {3.8520334561632137`*^9, 3.8520334570907154`*^9}, {
+   3.852033589203763*^9, 3.8520336369029117`*^9}, {3.8520336692896357`*^9, 
+   3.8520336707779145`*^9}, 
+   3.852033706093057*^9},ExpressionUUID->"1573b630-0447-4425-b885-\
+6cb865baef28"],
+
+Cell["\<\
+ This is our final result, but let's explore it a little further, and try to \
+convince ourselves that this is indeed correct (in case you might be \
+skeptical). Lets consider first if we had only made the \
+\[OpenCurlyQuote]first measurement\[CloseCurlyQuote] of time from our \
+dataset. What value of g would we get in that case? Calculate it. \
+\>", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, {3.8520334561632137`*^9, 3.8520334570907154`*^9}, {
+   3.852033589203763*^9, 3.8520336369029117`*^9}, {3.8520336692896357`*^9, 
+   3.8520336707779145`*^9}, {3.8520337078271074`*^9, 
+   3.8520337405598288`*^9}},ExpressionUUID->"ae6cfc39-2166-4674-9663-\
+77c56cb52896"],
+
+Cell["", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, {3.8520334561632137`*^9, 3.8520334570907154`*^9}, {
+   3.852033589203763*^9, 3.8520336369029117`*^9}, {3.8520336692896357`*^9, 
+   3.8520336707779145`*^9}, {3.8520337078271074`*^9, 
+   3.8520337437249174`*^9}},ExpressionUUID->"825f0560-f049-4a4e-96a4-\
+6afa225e44ea"],
+
+Cell["\<\
+Now do the same for each individual time measurement from our dataset, and \
+find the individual values of g we might have obtained. \
+\>", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, {3.8520334561632137`*^9, 3.8520334570907154`*^9}, {
+   3.852033589203763*^9, 3.8520336369029117`*^9}, {3.8520336692896357`*^9, 
+   3.8520336707779145`*^9}, {3.8520337078271074`*^9, 
+   3.8520337567962313`*^9}},ExpressionUUID->"06adf573-6f10-431b-9cad-\
+c6c16caf211b"],
+
+Cell["", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, {3.8520334561632137`*^9, 3.8520334570907154`*^9}, {
+   3.852033589203763*^9, 3.8520336369029117`*^9}, {3.8520336692896357`*^9, 
+   3.8520336707779145`*^9}, {3.8520337078271074`*^9, 
+   3.852033762006563*^9}},ExpressionUUID->"825bb76b-5c1c-43ea-81d7-\
+dee8b2cd044d"],
+
+Cell["\<\
+Histogram the distribution of obtained g values, and calculate the standard \
+deviation of these. \
+\>", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, {3.8520334561632137`*^9, 3.8520334570907154`*^9}, {
+   3.852033589203763*^9, 3.8520336369029117`*^9}, {3.8520336692896357`*^9, 
+   3.8520336707779145`*^9}, {3.8520337078271074`*^9, 
+   3.8520337779728923`*^9}, {3.852298487578188*^9, 
+   3.852298489665473*^9}},ExpressionUUID->"b2a3bc78-19e2-435b-a1fb-\
+3138a89ecb10"],
+
+Cell["", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, {3.8520334561632137`*^9, 3.8520334570907154`*^9}, {
+   3.852033589203763*^9, 3.8520336369029117`*^9}, {3.8520336692896357`*^9, 
+   3.8520336707779145`*^9}, {3.8520337078271074`*^9, 
+   3.8520337810395527`*^9}},ExpressionUUID->"8dae66eb-12bd-4ba1-8b97-\
+9e0fb417afa3"],
+
+Cell["\<\
+This is another measure of the uncertainty in g, based on the 'dispersion' of \
+the obtained individual values. You should find that it agrees quite closely \
+with the value you derived from the error propagation formula (express the \
+difference as a percentage of either value). Thus we see that the error \
+propagation is indeed a meaningful way to see how an underlying uncertainty \
+in one quantity translates to an uncertainty in a derived quantity\
+\>", "Text",
+ CellChangeTimes->{
+  3.852033176910928*^9, {3.8520332070935965`*^9, 3.8520332143985558`*^9}, {
+   3.8520332789884853`*^9, 3.8520332890732145`*^9}, {3.8520333828145437`*^9, 
+   3.852033403625058*^9}, {3.8520334561632137`*^9, 3.8520334570907154`*^9}, {
+   3.852033589203763*^9, 3.8520336369029117`*^9}, {3.8520336692896357`*^9, 
+   3.8520336707779145`*^9}, {3.8520337078271074`*^9, 
+   3.852033773183591*^9}},ExpressionUUID->"460e3aa5-5fb6-4d66-8b5b-\
+8eda401a6ea2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["General Exercise", "Section",
+ CellChangeTimes->{{3.8520338331371655`*^9, 
+  3.852033836475196*^9}},ExpressionUUID->"8b8855a9-ca86-4d7f-bf7f-\
+8ccff5fb7437"],
+
+Cell["\<\
+Assume the following data are readings of some quantity such as position, as \
+a function of time, in equal intervals, from 1s to 9s. Create a paired \
+dataset of position vs time, and plot this. Then find a model and fit this \
+data. Finally, find the time at which the position is 0?\
+\>", "Text",
+ CellChangeTimes->{
+  3.852119912466466*^9, {3.852119946446224*^9, 3.8521199500418544`*^9}, {
+   3.852124256659417*^9, 3.8521244388939934`*^9}, {3.8521248473773904`*^9, 
+   3.852124847834251*^9}, {3.852124915132218*^9, 3.85212496520598*^9}, {
+   3.8521250275293245`*^9, 
+   3.852125028786889*^9}},ExpressionUUID->"d6c5d3e3-01a3-480f-8a4a-\
+12b1ff524f47"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ydata1", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "1.1", ",", "2.5", ",", "3.4", ",", "4.6", ",", "5.0", ",", "4.2", ",", 
+     "3.8", ",", "2.9", ",", ".7"}], "}"}]}], ";"}]], "Input",
+ CellLabel->"In[80]:=",ExpressionUUID->"cdba99a1-d2f8-470d-9f32-852c05e44fa9"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1368, 829},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 166, 3, 96, "Title",ExpressionUUID->"8c930cec-80f3-40bb-a914-c4f0f55f1e2f"],
+Cell[CellGroupData[{
+Cell[771, 29, 172, 3, 67, "Section",ExpressionUUID->"348a02c7-af02-45ca-9db7-707e4765b776"],
+Cell[946, 34, 481, 9, 56, "Text",ExpressionUUID->"78b3f7a4-26f6-45a0-b3ce-b22adbebcd44"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1464, 48, 156, 3, 53, "Subtitle",ExpressionUUID->"47a7f260-6fc0-49e1-a28b-b6df469c9233"],
+Cell[1623, 53, 375, 9, 28, "Input",ExpressionUUID->"1be68ca5-bb09-4267-8c4b-7e1007ea0723"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2035, 67, 160, 3, 53, "Subtitle",ExpressionUUID->"96c55f6f-bd45-42e0-a4b6-95d7daebd5c6"],
+Cell[2198, 72, 325, 8, 28, "Input",ExpressionUUID->"1bbeee26-4eca-46e8-a619-2d15946ff04f"],
+Cell[2526, 82, 540, 11, 144, "Text",ExpressionUUID->"8d8b8194-5352-4839-a40f-1eb4e1736f33"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3103, 98, 160, 3, 53, "Subtitle",ExpressionUUID->"99bb1a2c-08f5-4aae-bd90-7db2f4d56cd1"],
+Cell[3266, 103, 1070, 21, 86, "Input",ExpressionUUID->"357dedd5-f53e-4e35-b009-2a1eca971cf1"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4373, 129, 160, 3, 53, "Subtitle",ExpressionUUID->"629802cc-ff21-44e9-9a54-5a0ac7052826"],
+Cell[4536, 134, 1123, 23, 86, "Input",ExpressionUUID->"eef50f91-f22e-4830-a69e-84465c424581"],
+Cell[5662, 159, 253, 5, 34, "Text",ExpressionUUID->"53fba896-e1d7-4020-9837-a08df6c4733f"],
+Cell[CellGroupData[{
+Cell[5940, 168, 157, 3, 67, "Section",ExpressionUUID->"64ae9faa-e62b-4b0a-aa5a-ce23476e6389"],
+Cell[6100, 173, 350, 7, 34, "Text",ExpressionUUID->"1b6bd1c7-66ff-491f-af38-9dc1e6d59e12"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6487, 185, 161, 3, 67, "Section",ExpressionUUID->"98775343-fb4c-4840-ba62-b08aa9a0fdef"],
+Cell[6651, 190, 508, 9, 34, "Text",ExpressionUUID->"2af04f60-f0e7-4b8b-be49-929aee20887a"],
+Cell[CellGroupData[{
+Cell[7184, 203, 366, 6, 53, "Subsection",ExpressionUUID->"ac3cfc08-617d-483a-a8db-2f2d94dffda9"],
+Cell[7553, 211, 797, 15, 188, "Text",ExpressionUUID->"efb11758-2fe8-4b42-863f-aadf3ae31b53"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8387, 231, 177, 3, 53, "Subsection",ExpressionUUID->"c96a5918-4f55-4163-a0ea-44061d789c6e"],
+Cell[8567, 236, 347, 7, 34, "Text",ExpressionUUID->"5b0e7484-7272-4863-94ae-189d9b2078d7"],
+Cell[8917, 245, 608, 13, 48, "Input",ExpressionUUID->"79e82ee2-c5a5-4dd9-a4e6-d3c961cd9137"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9574, 264, 209, 4, 67, "Section",ExpressionUUID->"dd9b1854-325b-458f-b7af-0c4c1e7a3e5b"],
+Cell[9786, 270, 713, 13, 100, "Text",ExpressionUUID->"6c9f2302-b1f2-4e0d-b156-5d87f1948fbe"],
+Cell[10502, 285, 456, 10, 48, "Input",ExpressionUUID->"1746cb0b-aa02-40b1-9918-e807d2fd4f48"],
+Cell[10961, 297, 453, 9, 34, "Text",ExpressionUUID->"9bacc679-609f-4da7-8760-aeee7bed046d"],
+Cell[11417, 308, 459, 10, 43, "DisplayFormula",ExpressionUUID->"ea09e1ed-6f5f-483e-9fe9-5cc9918d055f"],
+Cell[11879, 320, 632, 13, 78, "Text",ExpressionUUID->"c070c6e5-636e-4b65-848f-a55fb0d16ab4"],
+Cell[12514, 335, 402, 7, 34, "Text",ExpressionUUID->"d94db281-e869-4892-a9e8-4eca2c855b99"],
+Cell[12919, 344, 1131, 21, 166, "Text",ExpressionUUID->"670e12e3-a753-4bf4-ac1f-f8f424645478"],
+Cell[14053, 367, 380, 7, 34, "Text",ExpressionUUID->"1b0014fd-91cb-4dba-b2c0-5ebc2162f08c"],
+Cell[14436, 376, 622, 12, 56, "Text",ExpressionUUID->"e0f84983-e96f-4a19-be04-fce4392bf4b9"],
+Cell[15061, 390, 399, 7, 25, "DisplayFormula",ExpressionUUID->"ec24606b-9aff-4b9c-a93d-999ebeee9e75"],
+Cell[15463, 399, 581, 11, 34, "Text",ExpressionUUID->"9d1f00c0-9ab3-4640-ad33-15ca989ef276"],
+Cell[16047, 412, 456, 8, 34, "Text",ExpressionUUID->"1573b630-0447-4425-b885-6cb865baef28"],
+Cell[16506, 422, 838, 14, 56, "Text",ExpressionUUID->"ae6cfc39-2166-4674-9663-77c56cb52896"],
+Cell[17347, 438, 484, 8, 34, "Text",ExpressionUUID->"825f0560-f049-4a4e-96a4-6afa225e44ea"],
+Cell[17834, 448, 625, 11, 34, "Text",ExpressionUUID->"06adf573-6f10-431b-9cad-c6c16caf211b"],
+Cell[18462, 461, 482, 8, 34, "Text",ExpressionUUID->"825bb76b-5c1c-43ea-81d7-dee8b2cd044d"],
+Cell[18947, 471, 640, 12, 34, "Text",ExpressionUUID->"b2a3bc78-19e2-435b-a1fb-3138a89ecb10"],
+Cell[19590, 485, 484, 8, 34, "Text",ExpressionUUID->"8dae66eb-12bd-4ba1-8b97-9e0fb417afa3"],
+Cell[20077, 495, 944, 15, 78, "Text",ExpressionUUID->"460e3aa5-5fb6-4d66-8b5b-8eda401a6ea2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21058, 515, 163, 3, 67, "Section",ExpressionUUID->"8b8855a9-ca86-4d7f-bf7f-8ccff5fb7437"],
+Cell[21224, 520, 664, 12, 56, "Text",ExpressionUUID->"d6c5d3e3-01a3-480f-8a4a-12b1ff524f47"],
+Cell[21891, 534, 298, 7, 28, "Input",ExpressionUUID->"cdba99a1-d2f8-470d-9f32-852c05e44fa9"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
